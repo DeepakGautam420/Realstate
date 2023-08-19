@@ -2,17 +2,18 @@
 @section('style-area')
 @endsection
 @section('content-area')
-    <!-- user tables -->
+    <!-- rented tables -->
     <div class="col-lg-12 col-md-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Property Tables</h4>
+                        <h4>Rented Tables</h4>
                     </div>
                 </div>
             </div>
             <div class="widget-content widget-content-area">
+              <h5>Total Rent List :  {{isset($rent)?count($rent):''}}</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered mb-4">
                         <thead>
@@ -37,40 +38,33 @@
                                 <th>Monthly Status</th>
                                 <th>Picture</th>
                                 <th>Description</th>
-                                <th class="text-center">Action</th>
+                                {{-- <th class="text-center">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($properties as $user)
+                            @foreach ($rent as $rented)
                             <tr>
                                 <th>{{$loop-> index+1}}</th>
-                                <td>{{$user->role ?? ''}}</td>
-                                <td>{{$user->name ?? ''}}</td>
-                                <td>{{$user->email ?? ''}}</td>
-                                <td> {{$user->number ?? ''}}</td>
-                                <td> {{$user->for_sale ?? ''}}</td>
-                                <td> {{$user->property_type ?? ''}}</td>
-                                <td> {{$user->posting_as ?? ''}}</td>
-                                <td> {{$user->property_location ?? ''}}</td>
-                                <td> {{$user->new_project_socity ?? ''}}</td>
-                                <td> {{$user->property_address ?? ''}}</td>
-                                <td> {{$user->carpet_area ?? ''}}</td>
-                                <td> {{$user->super_area ?? ''}}</td>
-                                <td> {{$user->date ?? ''}}</td>
-                                <td> {{$user->monthly_rent ?? ''}}</td>
-                                <td> {{$user->security_amnt ?? ''}}</td>
-                                <td> {{$user->managment_charge ?? ''}}</td>
-                                <td> {{$user->monthly_status ?? ''}}</td>
-                                <td> 
-                                    @if(isset($user->picture))
-                                    @php
-                                        $imgs = json_decode($user->picture);
-                                    @endphp
-                                    @endif
-                                        <a href='{{route("admin.proertyimg",$user->picture)}}'><img src="{{asset('upload/product/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
-                                </td>
-                                <td> {{$user->description ?? ''}}</td>
-                                <td class="text-center">
+                                <td>{{$rented->role ?? ''}}</td>
+                                <td>{{$rented->name ?? ''}}</td>
+                                <td>{{$rented->email ?? ''}}</td>
+                                <td> {{$rented->number ?? ''}}</td>
+                                <td> {{$rented->for_sale ?? ''}}</td>
+                                <td> {{$rented->property_type ?? ''}}</td>
+                                <td> {{$rented->posting_as ?? ''}}</td>
+                                <td> {{$rented->property_location ?? ''}}</td>
+                                <td> {{$rented->new_project_socity ?? ''}}</td>
+                                <td> {{$rented->property_address ?? ''}}</td>
+                                <td> {{$rented->carpet_area ?? ''}}</td>
+                                <td> {{$rented->super_area ?? ''}}</td>
+                                <td> {{$rented->date ?? ''}}</td>
+                                <td> {{$rented->monthly_rent ?? ''}}</td>
+                                <td> {{$rented->security_amnt ?? ''}}</td>
+                                <td> {{$rented->managment_charge ?? ''}}</td>
+                                <td> {{$rented->monthly_status ?? ''}}</td>
+                                <td> {{$rented->picture ?? ''}}</td>
+                                <td> {{$rented->description ?? ''}}</td>
+                                {{-- <td class="text-center">
                                     <div class="dropdown custom-dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,14 +78,14 @@
                                             </svg>
                                         </a>
                                         @php
-                                        $bid=Crypt::encrypt($user->id);
+                                        $bid=Crypt::encrypt($rented->id);
                                         @endphp
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                             <a class="dropdown-item" href="{{route('admin.agentEdit',$bid)}}">Edit</a>
                                             <a class="dropdown-item" href="{{route('admin.deleteAgent',$bid)}}">Delete</a>
                                         </div>
                                     </div>
-                                </td>
+                                </td> --}}
                             </tr>
                                 @endforeach
                         </tbody>
@@ -99,7 +93,7 @@
                     {{-- {!! $properties->links() !!} --}}
                    
                 </div><br>
-                {!! $properties->links('pagination::bootstrap-5') !!}
+                {!! $rent->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>
