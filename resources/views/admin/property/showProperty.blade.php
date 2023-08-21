@@ -61,7 +61,14 @@
                                 <td> {{$user->security_amnt ?? ''}}</td>
                                 <td> {{$user->managment_charge ?? ''}}</td>
                                 <td> {{$user->monthly_status ?? ''}}</td>
-                                <td> {{$user->picture ?? ''}}</td>
+                                <td> 
+                                    @if(isset($user->picture))
+                                    @php
+                                        $imgs = json_decode($user->picture);
+                                    @endphp
+                                    @endif
+                                        <a href='{{route("admin.proertyimg",$user->picture)}}'><img src="{{asset('upload/product/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
+                                </td>
                                 <td> {{$user->description ?? ''}}</td>
                                 <td class="text-center">
                                     <div class="dropdown custom-dropdown">

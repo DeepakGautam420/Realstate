@@ -104,27 +104,27 @@ class AgentController extends Controller
         public function updateAgentDetail(Request $request , $id)
         {
     
-            $request->validate([
-                'role'=>'required',
-                'fname' => 'required',
-                'number' => 'required',
-                'email' => 'required',
-                'for_sale' => 'required',
-                'property_type' => 'required',
-                'posting_as' => 'required',
-                'property_location' => 'required',
-                'new_project_socity' => 'required',
-                'property_address' => 'required',
-                'desc' => 'required',
-                'carpet_area' => 'required',
-                'super_area' => 'required',
-                'date' => 'required',
-                'monthly_rent' => 'required',
-                'picture.*' => 'required|image',
-                'security_amnt' => 'required',
-                'managment_charge' => 'required',   
-                'monthly_status' => 'required',
-            ]);
+            // $request->validate([
+            //     'role'=>'required',
+            //     'fname' => 'required',
+            //     'number' => 'required',
+            //     'email' => 'required',
+            //     'for_sale' => 'required',
+            //     'property_type' => 'required',
+            //     'posting_as' => 'required',
+            //     'property_location' => 'required',
+            //     'new_project_socity' => 'required',
+            //     'property_address' => 'required',
+            //     'desc' => 'required',
+            //     'carpet_area' => 'required',
+            //     'super_area' => 'required',
+            //     'date' => 'required',
+            //     'monthly_rent' => 'required',
+            //     'picture.*' => 'required|image',
+            //     'security_amnt' => 'required',
+            //     'managment_charge' => 'required',   
+            //     'monthly_status' => 'required',
+            // ]);
                 $otherpic = [];
     
                 if ($request->hasFile('picture')) {
@@ -146,13 +146,13 @@ class AgentController extends Controller
                     'email'=>$request->email,
                     'for_sale'=>$request->for_sale,
                     'property_type'=>$request->property_type,
-                    'posting_as'=>$request->posting_as,
+                    'posting_as'=>$request->posting_as??'',
                     'property_location'=>$request->property_location,
                     'new_project_socity'=>$request->new_project_socity,
                     'property_address'=>$request->property_address,
                     'carpet_area'=>$request->carpet_area,
                     'super_area'=>$request->super_area,
-                    'date'=>$request->date,
+                    'date'=>$request->date??'',
                     'monthly_rent'=>$request->monthly_rent,
                     'monthly_status'=>$request->monthly_status,
                     'managment_charge'=>$request->managment_charge,
@@ -236,6 +236,12 @@ class AgentController extends Controller
                     $owner=User::where('role','owner')->find($id);
                     // dd($owner);
                     return view('admin.gate.register',compact('owner'));
+                
+                }  
+                public function proertyEmage($img)
+                {
+                    $imgs = $img;
+                    return view('admin.property.images',compact('imgs'));
                 
                 }
     }
