@@ -111,9 +111,7 @@
 
    {{-- @include('frontend.includes.search') --}}
 
-    <!--Carousel-->
-
-   @include('frontend.includes.crowsel')
+   
     <!-- End Intro Section -->
     @yield('content')
    <!-- End #main -->

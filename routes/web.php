@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\AgentController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\spatia\PermissionController;
 use App\Http\Controllers\admin\spatia\RoleController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\frontend\LoginController;
+use App\Http\Controllers\frontend\SellPropertyController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
@@ -78,3 +80,7 @@ Route::get('user-login',[LoginController::class,'user'])->name('userLogin');
 Route::get('user-sign-up',[LoginController::class,'signUp'])->name('userSignUp');
 Route::post('store-user-sign-up',[LoginController::class,'storeSignUp'])->name('signUpstore');
 Route::post('user-login',[LoginController::class,'userLoginStore'])->name('userLogin');
+Route::get('contact-us',[ContactUsController::class,'contactUs'])->name('contactUs');
+Route::post('store-contact-us',[ContactUsController::class,'storeContactUs'])->name('storeContactUs');
+Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
+Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');

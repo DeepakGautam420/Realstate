@@ -1,5 +1,8 @@
 @extends('frontend.includes.master')
 @section('content')
+ <!--Carousel-->
+
+ @include('frontend.includes.crowsel')
 <main id="main">
 
     <!-- ======= Services Section ======= -->

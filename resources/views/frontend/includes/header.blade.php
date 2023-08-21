@@ -25,7 +25,6 @@
          <ul class="navbar-nav text-end">
              <li class="nav-item dropdown ">
                  <a class="btn btn-danger" href="{{route('userLogin')}}" >Login</a>
-               
              </li>
          </ul>
      </div>
@@ -109,16 +108,16 @@
                  
              </li>
              <li class="nav-item dropdown">
-                 <a class="nav-link " href="#" >Sell</a>
+                 <a class="nav-link " href="{{route('sellProperty')}}" >Sell</a>
                  
              </li>
 
              <li class="nav-item dropdown">
-                 <a class="nav-link " href="#" >About US</a>
+                 <a class="nav-link " href="{{route('aboutUs')}}" >About US</a>
                  
              </li>
              <li class="nav-item dropdown">
-                 <a class="nav-link " href="#" >Contact US</a>
+                 <a class="nav-link " href="{{route('contactUs')}}" >Contact US</a>
                  
              </li>
          </ul>
