@@ -234,4 +234,15 @@ class AgentController extends Controller
         $imgs = $img;
         return view('admin.property.images', compact('imgs'));
     }
+
+    public function rentedList()
+    {
+        $rent = Agent::where('for_sale', 'rent_lease')->paginate(4);
+        return view('admin.property.rentList', compact('rent'));
+    }
+    public function salePropertyList()
+    {
+        $sale = Agent::where('for_sale', 'sale')->paginate(4);
+        return view('admin.property.salePropertyList', compact('sale'));
+    }
 }
