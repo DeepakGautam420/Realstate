@@ -1,7 +1,7 @@
 <div class="intro intro-carousel swiper position-relative">
     <div class="swiper-wrapper">
         <div class="swiper-slide carousel-item-a intro-item bg-image"
-            style="background-image: url(assets/img/slide-1.jpg)">
+            style="background-image: {{asset('assets/img/slide-1.jpg')}}">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="swiper-slide carousel-item-a intro-item bg-image"
-            style="background-image: url(assets/img/slide-2.jpg)">
+            style="background-image: {{asset('assets/img/slide-2.jpg')}}">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="swiper-slide carousel-item-a intro-item bg-image"
-            style="background-image: url(assets/img/slide-3.jpg)">
+            style="background-image : url({{asset('assets/img/slide-3.jpg')}})">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
