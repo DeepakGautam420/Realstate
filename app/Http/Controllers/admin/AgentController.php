@@ -117,7 +117,7 @@ class AgentController extends Controller
         //     'monthly_rent' => 'required',
         //     'picture.*' => 'required|image',
         //     'security_amnt' => 'required',
-        //     'managment_charge' => 'required',
+        //     'managment_charge' => 'required',   
         //     'monthly_status' => 'required',
         // ]);
         $otherpic = [];
@@ -163,7 +163,7 @@ class AgentController extends Controller
         }
     }
 
-    public function deleteAgent($id)
+    public  function deleteAgent($id)
     {
         $id = Crypt::decrypt($id);
         $agent = Agent::find($id)->delete();
@@ -228,23 +228,10 @@ class AgentController extends Controller
         $owner = User::where('role', 'owner')->find($id);
         // dd($owner);
         return view('admin.gate.register', compact('owner'));
-
-    }
-
-    public function rentedList()
-    {
-        $rent = Agent::where('for_sale', 'rent_lease')->paginate(4);
-        return view('admin.property.rentList', compact('rent'));
-    }
-    public function salePropertyList()
-    {
-        $sale = Agent::where('for_sale', 'sale')->paginate(4);
-        return view('admin.property.salePropertyList', compact('sale'));
     }
     public function proertyEmage($img)
     {
         $imgs = $img;
         return view('admin.property.images', compact('imgs'));
-
     }
 }
