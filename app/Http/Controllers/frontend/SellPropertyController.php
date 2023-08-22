@@ -86,4 +86,36 @@ class SellPropertyController extends Controller
         return view('frontend.salePropertyList',compact('sale'));
     }
 
+    public function userProperty()
+    {
+        $property=SellProperty::get();
+        return view('admin.property.userPropertyList',compact('property'));
+    }
+                public function propertyOverView($id)
+                {
+                    // dd($id);
+                    $single_pg=Agent::where('for_sale','pg_hostel')->find($id);
+
+                    return view('frontend.pgHostelSingle',compact('single_pg'));
+
+                    // dd($single_product);
+                }
+                public function rentLeaseOverView($id)
+                {
+                    // dd($id);
+                    $lease=Agent::where('for_sale','rent_lease')->find($id);
+
+                    return view('frontend.singleRentLease',compact('lease'));
+
+                    // dd($single_product);
+                }
+                public function saleOverView($id)
+                {
+                    // dd($id);
+                    $sale=Agent::where('for_sale','sale')->find($id);
+
+                    return view('frontend.singleSale',compact('sale'));
+
+                    // dd($single_product);
+                }
 }

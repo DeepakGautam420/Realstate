@@ -22,7 +22,8 @@
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-6">
-                  <h5>{{$sl->name}}</h5>
+                 <a href="{{route('propertyOverView',$sl->id)}}"><h5>{{$sl->name}}</h5></a>
+                 
                   <div class="d-flex flex-row">
                     {{-- <div class="text-danger mb-1 me-2">
                       <i class="fa fa-star"></i>

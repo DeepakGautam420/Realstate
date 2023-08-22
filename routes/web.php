@@ -75,6 +75,7 @@ Route::get('edit-owner/{id}',[AgentController::class,'ownerEdit'])->name('ownerE
 Route::get('rented-list',[AgentController::class,'rentedList'])->name('rentedList');
 Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
 Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
+Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
 
 });
 
@@ -90,3 +91,6 @@ Route::post('store-sell-property',[SellPropertyController::class,'storeSellPrope
 Route::get('rent-property-list',[SellPropertyController::class,'rentPropertyList'])->name('rentPropertyList');
 Route::get('pg-hostel-property-list',[SellPropertyController::class,'pgPropertyList'])->name('pgPropertyList');
 Route::get('sell-property-list',[SellPropertyController::class,'salePropertyList'])->name('salePropertyList');
+Route::get('show-one-one-property/{id}',[SellPropertyController::class,'propertyOverView'])->name('propertyOverView');
+Route::get('show-rent-lease-property/{id}',[SellPropertyController::class,'rentLeaseOverView'])->name('rentLeaseOverView');
+Route::get('show-sale-property/{id}',[SellPropertyController::class,'saleOverView'])->name('saleOverView');

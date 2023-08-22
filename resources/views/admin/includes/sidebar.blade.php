@@ -213,6 +213,9 @@
                             <li>
                                     <a href="{{route('admin.salePropertyList')}}" target=""> Sale Property List </a>
                                 </li>
+                            <li>
+                                    <a href="{{route('admin.userProperty')}}" target="">User Sale Property List </a>
+                                </li>
                             {{-- <li>
                                 <a href="auth_pass_recovery_boxed.html" target=""> Recover ID Boxed </a>
                             </li>
