@@ -86,3 +86,7 @@ Route::get('contact-us',[ContactUsController::class,'contactUs'])->name('contact
 Route::post('store-contact-us',[ContactUsController::class,'storeContactUs'])->name('storeContactUs');
 Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
 Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');
+Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
+Route::get('rent-property-list',[SellPropertyController::class,'rentPropertyList'])->name('rentPropertyList');
+Route::get('pg-hostel-property-list',[SellPropertyController::class,'pgPropertyList'])->name('pgPropertyList');
+Route::get('sell-property-list',[SellPropertyController::class,'salePropertyList'])->name('salePropertyList');

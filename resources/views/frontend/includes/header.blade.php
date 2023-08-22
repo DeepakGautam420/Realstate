@@ -4,7 +4,7 @@
  style="background: linear-gradient(to bottom, rgb(165, 110, 6), rgb(217, 196, 158), #0f9b13);
 ">
  <div class="p-2 col-sm-6">
-     <h2 class="text-white">magicbricks</h2>
+     <h2 class="text-white"><a href="{{url('/')}}">MagicBricks</a></h2>
  </div>
  <!-- <div class="justify-content-center" id="navbarDefault">
  <ul class="navbar-nav">
@@ -46,7 +46,7 @@
      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
          <ul class="navbar-nav">
              <li class="nav-item dropdown">
-                 <a class="nav-link" href="#" >Home</a>
+                 <a class="nav-link" href="{{url('/')}}" >Home</a>
                 {{--  id="navbarDropdown" role="button"
                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                  <div class="dropdown-menu buy-menu-dropdown">
@@ -104,9 +104,14 @@
                  </div> --}}
              </li>
              <li class="nav-item dropdown">
-                 <a class="nav-link " href="#" >Rent</a>
-                 
-             </li>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Property category</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item " href="{{route('rentPropertyList')}}">RENT/LEASE</a>
+                  <a class="dropdown-item " href="{{route('pgPropertyList')}}">PG/HOSTEL</a>
+                  <a class="dropdown-item " href="{{route('salePropertyList')}}">SALE</a>
+                </div>
+              </li>
              <li class="nav-item dropdown">
                  <a class="nav-link " href="{{route('sellProperty')}}" >Sell</a>
                  
