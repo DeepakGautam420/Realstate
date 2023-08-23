@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     function PaymentList(){
-        dd('hii');
+        return view('admin.payment.payment');
     }
     
 }

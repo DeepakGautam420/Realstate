@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\Admin\AgentController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\spatia\PermissionController;
@@ -61,21 +62,22 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'auth'],function(
     //admin controller
     Route::get('/users',[UserController::class,'index'])->name('users');
 
-Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
-Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
-Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
-Route::post('update-agent-detail/{id}',[AgentController::class,'updateAgentDetail'])->name('updateAgentDetail');
-Route::get('delete-agent-detail/{id}',[AgentController::class,'deleteAgent'])->name('deleteAgent');
-Route::get('list-of-agent',[AgentController::class,'agentList'])->name('agentList');
-Route::get('list-of-owner',[AgentController::class,'ownerList'])->name('ownerList');
-Route::get('edit-agent/{id}',[AgentController::class,'editAgent'])->name('editAgent');
-Route::get('delete-agent/{id}',[AgentController::class,'agentDelete'])->name('agentDelete');
-Route::post('update-agent/{id}',[AgentController::class,'updateAgent'])->name('updateAgent');
-Route::get('edit-owner/{id}',[AgentController::class,'ownerEdit'])->name('ownerEdit');
-Route::get('rented-list',[AgentController::class,'rentedList'])->name('rentedList');
-Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
-Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
+    Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
+    Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
+    Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
+    Route::post('update-agent-detail/{id}',[AgentController::class,'updateAgentDetail'])->name('updateAgentDetail');
+    Route::get('delete-agent-detail/{id}',[AgentController::class,'deleteAgent'])->name('deleteAgent');
+    Route::get('list-of-agent',[AgentController::class,'agentList'])->name('agentList');
+    Route::get('list-of-owner',[AgentController::class,'ownerList'])->name('ownerList');
+    Route::get('edit-agent/{id}',[AgentController::class,'editAgent'])->name('editAgent');
+    Route::get('delete-agent/{id}',[AgentController::class,'agentDelete'])->name('agentDelete');
+    Route::post('update-agent/{id}',[AgentController::class,'updateAgent'])->name('updateAgent');
+    Route::get('edit-owner/{id}',[AgentController::class,'ownerEdit'])->name('ownerEdit');
+    Route::get('rented-list',[AgentController::class,'rentedList'])->name('rentedList');
+    Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
+    Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
 
+    Route::get('payment',[AdminController::class,'PaymentList'])->name('payment');
 });
 
 Route::get('user-login',[LoginController::class,'user'])->name('userLogin');
