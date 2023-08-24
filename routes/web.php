@@ -61,9 +61,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'auth'],function(
 
     //admin controller
     Route::get('/users',[UserController::class,'index'])->name('users');
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
 Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
 Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
@@ -80,28 +77,6 @@ Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->na
 Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
 Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
 Route::get('user-sell-property-list',[SellPropertyController::class,'userSellProperty'])->name('userSellProperty');
-=======
-=======
->>>>>>> Stashed changes
-    Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
-    Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
-    Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
-    Route::post('update-agent-detail/{id}',[AgentController::class,'updateAgentDetail'])->name('updateAgentDetail');
-    Route::get('delete-agent-detail/{id}',[AgentController::class,'deleteAgent'])->name('deleteAgent');
-    Route::get('list-of-agent',[AgentController::class,'agentList'])->name('agentList');
-    Route::get('list-of-owner',[AgentController::class,'ownerList'])->name('ownerList');
-    Route::get('edit-agent/{id}',[AgentController::class,'editAgent'])->name('editAgent');
-    Route::get('delete-agent/{id}',[AgentController::class,'agentDelete'])->name('agentDelete');
-    Route::post('update-agent/{id}',[AgentController::class,'updateAgent'])->name('updateAgent');
-    Route::get('edit-owner/{id}',[AgentController::class,'ownerEdit'])->name('ownerEdit');
-    Route::get('rented-list',[AgentController::class,'rentedList'])->name('rentedList');
-    Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
-    Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
-    Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     //Payment details routes
     Route::resource('payments',PaymentController::class);

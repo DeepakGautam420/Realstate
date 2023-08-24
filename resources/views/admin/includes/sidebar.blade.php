@@ -122,16 +122,9 @@
                                     class="feather feather-more-horizontal">
                                     <circle cx="12" cy="12" r="1"></circle>
                                     <circle cx="19" cy="12" r="1"></circle>
-                                    <circle cx="5" cy="12" r="1"></circle>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+                                    <circle cx="5" cy="12" r="1"></circle>m
                                 </svg><a href="{{route('admin.payments.index')}}"><span>Managment</span></a></a>
-=======
-                                </svg><a href="{{route('admin.payments.index')}}"><span>Managment</span></a>
->>>>>>> Stashed changes
-=======
-                                </svg><a href="{{route('admin.payments.index')}}"><span>Managment</span></a>
->>>>>>> Stashed changes
+
                             </div>
                         </li>
 

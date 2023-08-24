@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('property_address');
             $table->string('carpet_area');
             $table->string('super_area');
-            $table->string('date');
             $table->string('second_month')->nullable();
             $table->string('monthly_rent');
             $table->string('security_amnt');

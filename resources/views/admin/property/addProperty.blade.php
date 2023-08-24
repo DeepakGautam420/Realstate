@@ -186,35 +186,6 @@
                         </div>
                     </div>
                     <hr>
-                    <h5>Transaction Type Property Availability</h5>
-                    <hr>
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <p class="">Available For</p>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="date" id="femaleGender"
-                                    value="select_date"/>
-                                <label class="form-check-label" for="femaleGender" >Select Date</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="date" id="maleGender"
-                                    value="immediately" />
-                                <label class="form-check-label" for="maleGender" >Immediately</label>
-                            </div>
-                        </div>
-                        {{-- <div class="field-wrapper input mb-2 col-6">
-                            <label for="">I Am</label>
-                            <select class="form-control form-small" name="">
-                                <option selected hidden>--Select--</option>
-                                <option value="agent">....</option>
-                                <option value="hr">....</option>
-                                <option value="owener">....</option>
-                            </select>
-                        </div> --}}
-                    </div>
-                    <hr>
                     <h5>Rent/Lease Details</h5>
                     <hr>
                     <div class="row mb-4">
@@ -244,7 +215,7 @@
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="Monthly">Monthly Rent</label>
-                            <input type="text" class="form-control" name="full_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Monthly Rent"
+                            <input type="number" class="form-control" name="full_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Monthly Rent"
                                 value="">
                         </div>
                     </div>
