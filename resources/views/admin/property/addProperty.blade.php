@@ -74,11 +74,11 @@
                         <div class="col-6">
                             <p class="">For</p>
                             {{-- {{$editProperty->for_sale}} --}}
-                            <div class="form-check form-check-inline">
+                            {{-- <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="for_sale" {{isset($editProperty->for_sale)?($editProperty->for_sale=='sale'?'checked':''):''}} id="femaleGender"
                                     value="sale"  />
                                 <label class="form-check-label" for="femaleGender" value="sale"  >Sale</label>
-                            </div>
+                            </div> --}}
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="for_sale"  {{isset($editProperty->for_sale)?($editProperty->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
@@ -224,8 +224,8 @@
                                 value="">
                         </div>
                         <div class="col-6">
-                            <label for="security">Security Amount (optional)</label>
-                            <input type="text" class="form-control" name="security_amnt" value="{{$editProperty->security_amnt??''}}" placeholder="Security Amount"
+                            <label for="security">Per</label>
+                            <input type="date" class="form-control" name="second_month" value="{{$editProperty->second_month??''}}" placeholder="Security Amount"
                                 value="">
                         </div>
                     </div>
@@ -236,8 +236,15 @@
                                 value="">
                         </div>
                         <div class="col-6">
-                            <label for="security">Per</label>
-                            <input type="text" class="form-control" name="monthly_status" value="{{$editProperty->monthly_status??''}}" placeholder="Monthly Status"
+                            <label for="security">Security Amount</label>
+                            <input type="text" class="form-control" name="security_amnt" value="{{$editProperty->security_amnt??''}}" placeholder="Security Ammount"
+                                value="">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label for="Monthly">Monthly Rent</label>
+                            <input type="text" class="form-control" name="full_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Monthly Rent"
                                 value="">
                         </div>
                     </div>

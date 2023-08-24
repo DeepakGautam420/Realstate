@@ -28,12 +28,13 @@ return new class extends Migration
             $table->string('carpet_area');
             $table->string('super_area');
             $table->string('date');
+            $table->string('second_month')->nullable();
             $table->string('monthly_rent');
             $table->string('security_amnt');
             $table->string('managment_charge');
-            $table->string('monthly_status');
             $table->string('picture');
             $table->string('description');
+            $table->string('full_rent');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -40,9 +40,9 @@
                             <li class="active">
                                 <a href="{{ route('admin.dashboard') }}"> Dashboard </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#"> Sales </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <li class="menu">
@@ -155,6 +155,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.showAgentDetail') }}" target="">Manage Property</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.userSellProperty')}}" target="">Sell Property</a>
                                 </li>
                                 {{-- <li>
                                     <a href="auth_lockscreen_boxed.html" target=""> Manage Product </a>

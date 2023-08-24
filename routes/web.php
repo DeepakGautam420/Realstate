@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AgentController;
+use App\Http\Controllers\admin\AgentController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\spatia\PermissionController;
 use App\Http\Controllers\admin\spatia\RoleController;
@@ -76,6 +76,7 @@ Route::get('rented-list',[AgentController::class,'rentedList'])->name('rentedLis
 Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
 Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
 Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
+Route::get('user-sell-property-list',[SellPropertyController::class,'userSellProperty'])->name('userSellProperty');
 
 });
 

@@ -38,7 +38,7 @@ class AgentController extends Controller
             'picture.*' => 'required|image',
             'security_amnt' => 'required',
             'managment_charge' => 'required',
-            'monthly_status' => 'required',
+            'second_month' => 'required',
         ]);
         $otherpic = [];
 
@@ -69,10 +69,11 @@ class AgentController extends Controller
             'super_area' => $request->super_area,
             'date' => $request->date,
             'monthly_rent' => $request->monthly_rent,
-            'monthly_status' => $request->monthly_status,
+            'second_month' => $request->second_month,
             'managment_charge' => $request->managment_charge,
             'description' => $request->desc,
             'security_amnt' => $request->security_amnt,
+            'full_rent' => $request->full_rent,
             'picture' => json_encode($otherpic),
 
         ]);
