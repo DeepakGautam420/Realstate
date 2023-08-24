@@ -23,7 +23,7 @@
                     </div>
                 @endif
                 
-                <form action="{{isset($editProperty)?route('admin.updateAgentDetail',$editProperty->id):route('admin.payments.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{isset($editProperty)?route('admin.payments.edit',$editProperty->id):route('admin.payments.store')}}" method="post" enctype="multipart/form-data">
                    
                     @isset($editProperty)
                     @method('POST')
@@ -53,12 +53,6 @@
                     <div class="row mb-4">
                         <div class="col-6">
                             <p class="">For</p>
-                            {{-- {{$editProperty->for_sale}} --}}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="for_sale" {{isset($editProperty->for_sale)?($editProperty->for_sale=='sale'?'checked':''):''}} id="femaleGender"
-                                    value="sale"  />
-                                <label class="form-check-label" for="femaleGender" value="sale"  >Sale</label>
-                            </div>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="for_sale"  {{isset($editProperty->for_sale)?($editProperty->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
@@ -87,47 +81,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <p class="">You are posting as</p>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="posting_as" id="femaleGender"
-                                    value="full_house"  />
-                                <label class="form-check-label" for="femaleGender" >Full House</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="posting_as" id="maleGender"
-                                    value="on_shairing_basis" />
-                                <label class="form-check-label" for="maleGender">On shairing basis</label>
-                            </div>
-                        </div>
-                        {{-- <div class="col-6">
-                            <div class="col-6">
-                            <p class="">For</p>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                    value="sale" checked />
-                                <label class="form-check-label" for="femaleGender">Sale</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                                    value="rent_lease" />
-                                <label class="form-check-label" for="maleGender">Rent/Lease</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                                    value="pg_hostel" />
-                                <label class="form-check-label" for="otherGender">PG/Hostel</label>
-                            </div>
-                        </div>
-                        </div> --}}
-                    </div>
-                    <hr>
+                    
                     <h5>
                         Property Location
                     </h5>
@@ -166,61 +120,39 @@
                         </div>
                     </div>
                     <hr>
-                    <h5>Transaction Type Property Availability</h5>
-                    <hr>
+                    
+                       
                     <div class="row mb-4">
-                        <div class="col-6">
-                            <p class="">Available For</p>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="date" id="femaleGender"
-                                    value="select_date"/>
-                                <label class="form-check-label" for="femaleGender" >Select Date</label>
+                        <h5 class="col-12">Rent/Lease Details</h5>
+                        <hr>
+                            <div class="col-6">
+                                <label for="Monthly">Rent From</label>
+                                <input type="date" class="form-control" name="from_month" value="{{$editProperty->monthly_rent??''}}" placeholder="Enter Total Rent"
+                                    value="">
                             </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="date" id="maleGender"
-                                    value="immediately" />
-                                <label class="form-check-label" for="maleGender" >Immediately</label>
+                            <div class="col-6">
+                                <label for="security">To</label>
+                                <input type="date" class="form-control" name="to_month" value="{{$editProperty->second_month??''}}" placeholder="Security Amount"
+                                    value="">
+                            </div>
+                        
+                            <div class="col-6">
+                                <label for="Monthly">Manegment Charge</label>
+                                <input type="text" class="form-control" name="managment_charge" value="{{$editProperty->managment_charge??''}}" placeholder="Maintenance charge"
+                                    value="">
+                            </div>
+                            <div class="col-6">
+                                <label for="security">Security Amount</label>
+                                <input type="text" class="form-control" name="security_amnt" value="{{$editProperty->security_amnt??''}}" placeholder="Security Ammount"
+                                    value="">
+                            </div>
+                        
+                            <div class="col-6">
+                                <label for="Monthly">Monthly Rent</label>
+                                <input type="number" class="form-control" name="full_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Monthly Rent"
+                                    value="">
                             </div>
                         </div>
-                        {{-- <div class="field-wrapper input mb-2 col-6">
-                            <label for="">I Am</label>
-                            <select class="form-control form-small" name="">
-                                <option selected hidden>--Select--</option>
-                                <option value="agent">....</option>
-                                <option value="hr">....</option>
-                                <option value="owener">....</option>
-                            </select>
-                        </div> --}}
-                    </div>
-                    <hr>
-                    <h5>Rent/Lease Details</h5>
-                    <hr>
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <label for="Monthly">Monthly Rent</label>
-                            <input type="date" class="form-control" name="monthly_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Enter Total Rent"
-                                value="">
-                        </div>
-                        <div class="col-6">
-                            <label for="security">Security Amount (optional)</label>
-                            <input type="text" class="form-control" name="security_amnt" value="{{$editProperty->security_amnt??''}}" placeholder="Security Amount"
-                                value="">
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <label for="Monthly">Manegment Charge</label>
-                            <input type="text" class="form-control" name="managment_charge" value="{{$editProperty->managment_charge??''}}" placeholder="Maintenance charge"
-                                value="">
-                        </div>
-                        <div class="col-6">
-                            <label for="security">Per</label>
-                            <input type="text" class="form-control" name="monthly_status" value="{{$editProperty->monthly_status??''}}" placeholder="Monthly Status"
-                                value="">
-                        </div>
-                    </div>
                     <hr>
                     <h5>
                         Property Image And Description
@@ -237,23 +169,10 @@
                             <textarea class="form-control" name="desc" rows="1" cols="10">{{$editProperty->desc??'Property Description'}}</textarea>
                         </div>
                     </div>
-                    {{--   <div class="row mb-4">
-                    <div class="col-6 {{isset($editUser)? 'd-none':''}}">
-                        <input type="password" class="form-control" name="password" placeholder="Password" value="">
-                    </div>
-                    <div class="col-6">
-                        <select class="form-control form-small" name="roles[]">
-                            <option selected hidden>--Select Role--</option>
-                            @foreach ($roles as $role)
-                            <option value="{{$role->id}}"
-                                {{isset($editUser)?($editUser->roles[0]->id == $role->id ?'selected':''):''}}>
-                                {{$role->name ?? ''}}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
+                  
             </div>
             &nbsp;&nbsp;&nbsp; <button type="submit"
-                class="btn btn-primary mb-2">{{isset($editProperty)?'Update Property':'Add Property'}}</button>
+                class="btn btn-primary mb-2">{{isset($editProperty)?'Update Payment':'Add Payment'}}</button>
             </form>
         </div>
     </div>

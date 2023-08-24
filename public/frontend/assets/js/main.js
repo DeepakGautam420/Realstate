@@ -78,11 +78,10 @@
    */
   let preloader = select('#preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove(150)
-    });
-
-  }
+    setTimeout(() => {
+      $('#preloader').remove();
+    } , 1000)
+    };
 
   /**
    * Search window open/close

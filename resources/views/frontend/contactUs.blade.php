@@ -1,5 +1,6 @@
 @extends('frontend.includes.master')
 @section('content')
+
 <section class="intro-single">
     <div class="container">
       <div class="row">
@@ -38,7 +39,7 @@
         <div class="col-sm-12 section-t8">
           <div class="row">
             <div class="col-md-7">
-              <form action="{{route('storeContactUs')}}" method="post" role="form" enctype="multipart/form-data" class="php-email-form">
+              <form action="{{route('storeContactUs')}}" method="post" role="form" enctype="multipart/form-data">
                @csrf
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -63,9 +64,9 @@
                   </div>
                   <div class="col-md-12 my-3">
                     <div class="mb-3">
-                      <div class="loading">Loading</div>
+                      {{-- <div class="loading">Loading</div> --}}
                       <div class="error-message"></div>
-                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                      {{-- <div class="sent-message">Your message has been sent. Thank you!</div> --}}
                     </div>
                   </div>
 

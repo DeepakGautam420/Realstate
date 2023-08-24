@@ -33,11 +33,11 @@ class AgentController extends Controller
             'desc' => 'required',
             'carpet_area' => 'required',
             'super_area' => 'required',
-            'monthly_rent' => 'required',
+            'to_month' => 'required',
             'picture.*' => 'required|image',
             'security_amnt' => 'required',
             'managment_charge' => 'required',
-            'second_month' => 'required',
+            'from_month' => 'required',
         ]);
         $otherpic = [];
 
@@ -66,8 +66,8 @@ class AgentController extends Controller
             'property_address' => $request->property_address,
             'carpet_area' => $request->carpet_area,
             'super_area' => $request->super_area,
-            'monthly_rent' => $request->monthly_rent,
-            'second_month' => $request->second_month,
+            'from_month' => $request->from_month,
+            'to_month' => $request->to_month,
             'managment_charge' => $request->managment_charge,
             'description' => $request->desc,
             'security_amnt' => $request->security_amnt,
@@ -146,11 +146,12 @@ class AgentController extends Controller
             'property_address' => $request->property_address,
             'carpet_area' => $request->carpet_area,
             'super_area' => $request->super_area,
-            'monthly_rent' => $request->monthly_rent,
-            'monthly_status' => $request->monthly_status,
+            'from_month' => $request->from_month,
+            'to_month' => $request->to_month,
             'managment_charge' => $request->managment_charge,
             'description' => $request->desc,
             'security_amnt' => $request->security_amnt,
+            'property_status' => $request->property_status,
             'picture' => json_encode($otherpic),
 
         ]);

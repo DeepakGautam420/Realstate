@@ -31,11 +31,11 @@ class ContactUsController extends Controller
             ]);
             // dd($data);
             if($data){
-                return redirect()->back()->with('success', 'Successfully ! Submitted');
+                return redirect(route('contactUs'))->with('success', 'Successfully ! Submitted');
             // Handle the exception, display an error message, or log the error
             // For example:
             }else{
-                return redirect()->back()->with('error', 'Something Went Wrong');
+                return redirect(route('contactUs'))->with('error', 'Something Went Wrong');
             }
 
     }

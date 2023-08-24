@@ -31,7 +31,19 @@
                     @csrf
                     <h5>Personal Detail</h5>
                     <hr>
+                    
                     <div class="row mb-4">
+                        @if(isset($editProperty->property_status))
+                    <div class="field-wrapper input mb-2 col-6">
+                        <label for="property">Property Status</label>
+                        <select class="form-control form-small" name="property_status">
+                           
+                           <option value="" {{($editProperty->property_status==1)?'Available':'Sold'}} selected disabled>Currently {{($editProperty->property_status==1)?'Available':'Sold'}} Please Select</option>
+                           <option value="1">Available</option>
+                           <option value="0">Sold</option>
+                        </select>
+                    </div>
+                    @endif
                         <div class="field-wrapper input mb-2 col-6">
                             <label for="">I Am</label>
                             <select name="role" class="form-control">
@@ -190,13 +202,13 @@
                     <hr>
                     <div class="row mb-4">
                         <div class="col-6">
-                            <label for="Monthly">Monthly Rent</label>
-                            <input type="date" class="form-control" name="monthly_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Enter Total Rent"
+                            <label for="Monthly">Rent From</label>
+                            <input type="date" class="form-control" name="from_month" value="{{$editProperty->monthly_rent??''}}" placeholder="Enter Total Rent"
                                 value="">
                         </div>
                         <div class="col-6">
-                            <label for="security">Per</label>
-                            <input type="date" class="form-control" name="second_month" value="{{$editProperty->second_month??''}}" placeholder="Security Amount"
+                            <label for="security">To</label>
+                            <input type="date" class="form-control" name="to_month" value="{{$editProperty->second_month??''}}" placeholder="Security Amount"
                                 value="">
                         </div>
                     </div>

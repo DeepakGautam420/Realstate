@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agents', function (Blueprint $table) {
+        Schema::create('sale_payments', function (Blueprint $table) {
             $table->id();
             $table->string('role');
             $table->string('name');
@@ -34,7 +34,6 @@ return new class extends Migration
             $table->string('picture');
             $table->string('description');
             $table->string('full_rent');
-            $table->string('property_status');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -47,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agents');
+        Schema::dropIfExists('sale_payments');
     }
 };

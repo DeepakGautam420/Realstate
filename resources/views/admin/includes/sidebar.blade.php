@@ -114,19 +114,39 @@
                         </ul>
                     </li>
                     @can('manage')
-                        <li class="menu menu-heading">
-                            
-                            <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    <li class="menu">
+                        <a href="#payment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-more-horizontal">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="19" cy="12" r="1"></circle>
-                                    <circle cx="5" cy="12" r="1"></circle>m
-                                </svg><a href="{{route('admin.payments.index')}}"><span>Managment</span></a></a>
-
+                                    class="feather feather-align-justify" data-v-5522efca="">
+                                    <line x1="21" y1="10" x2="3" y2="10"></line>
+                                    <line x1="21" y1="6" x2="3" y2="6"></line>
+                                    <line x1="21" y1="14" x2="3" y2="14"></line>
+                                    <line x1="21" y1="18" x2="3" y2="18"></line>
+                                </svg>
+                                <span>Payments Details</span>
                             </div>
-                        </li>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="payment" data-parent="#accordionExample">
+                            <li>
+                                <a href="{{route('admin.payments.index')}}" target="">Payment Rent/Lease </a>
+                            </li>
+                            <li>
+                                <a href="#" target="">Payment Sale</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
 
                         <li class="menu">
                             <a href="#manage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
