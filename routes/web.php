@@ -63,6 +63,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'auth'],function(
     Route::get('/users',[UserController::class,'index'])->name('users');
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
 Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
 Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
@@ -80,6 +81,8 @@ Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('
 Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
 Route::get('user-sell-property-list',[SellPropertyController::class,'userSellProperty'])->name('userSellProperty');
 =======
+=======
+>>>>>>> Stashed changes
     Route::get('add-property',[AgentController::class,'addProperty'])->name('addProperty');
     Route::post('store-agent-detail',[AgentController::class,'storeAgentDetail'])->name('storeAgentDetail');
     Route::get('show-agent-detail',[AgentController::class,'showAgentDetail'])->name('showAgentDetail');
@@ -95,6 +98,9 @@ Route::get('user-sell-property-list',[SellPropertyController::class,'userSellPro
     Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->name('salePropertyList');
     Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
     Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     //Payment details routes
