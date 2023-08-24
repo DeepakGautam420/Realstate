@@ -78,6 +78,7 @@ Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('
 Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
 Route::get('user-sell-property-list',[SellPropertyController::class,'userSellProperty'])->name('userSellProperty');
 
+    Route::get('payment',[AdminController::class,'PaymentList'])->name('payment');
 });
 
 Route::get('user-login',[LoginController::class,'user'])->name('userLogin');

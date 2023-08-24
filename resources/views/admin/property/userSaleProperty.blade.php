@@ -31,7 +31,7 @@
                     @csrf
                     <h5>Personal Detail</h5>
                     <hr>
-                    <div class="row mb-4">  
+                    <div class="row mb-4"> 
                         <div class="col-12">
                             <label for="name">Full Name</label>
                             <input type="text" class="form-control" name="oname" id="name" placeholder="Enter Name"
