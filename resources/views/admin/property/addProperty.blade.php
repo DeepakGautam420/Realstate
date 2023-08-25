@@ -83,14 +83,14 @@
                     <h5>Property Detail</h5>
                     <hr>
                     <div class="row mb-4">
-                        <div class="col-6">
+                        {{-- <div class="col-6">
                             <p class="">For</p>
-                            {{-- {{$editProperty->for_sale}} --}}
-                            {{-- <div class="form-check form-check-inline">
+                            {{$editProperty->for_sale}}
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="for_sale" {{isset($editProperty->for_sale)?($editProperty->for_sale=='sale'?'checked':''):''}} id="femaleGender"
                                     value="sale"  />
                                 <label class="form-check-label" for="femaleGender" value="sale"  >Sale</label>
-                            </div> --}}
+                            </div>
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="for_sale"  {{isset($editProperty->for_sale)?($editProperty->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
@@ -104,9 +104,37 @@
                                 <label class="form-check-label" for="otherGender" value="pg_hostel"  >PG/Hostel</label>
                             </div>
                             
+                        </div> --}}
+
+                        <div class="col-6">
+                            <p class="">For</p>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="for_sale"  {{isset($editProperty->for_sale)?($editProperty->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
+                                    value="rent_lease" />
+                                <label class="form-check-label" for="maleGender" value="rent_lease">Rent/Lease</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="for_sale" {{isset($editProperty->for_sale)?($editProperty->for_sale=='pg_hostel'?'checked':''):''}} id="otherGender"
+                                    value="pg_hostel" />
+                                <label class="form-check-label" for="otherGender" value="pg_hostel"  >PG/Hostel</label>
+                            </div>
+                            
                         </div>
                         
                         <div class="field-wrapper input mb-2 col-6">
+                            <label for="property">Property Type</label>
+                            <select class="form-control form-small" name="property_type">
+                                
+                                <option selected hidden>--Select Property Type--</option>
+                               <option value="comercial" {{isset($editProperty->property_type)?($editProperty->property_type=='comercial'?'selected':''):''}}>Comercial</option>
+                               <option value="residential" {{isset($editProperty->property_type)?($editProperty->property_type=='residential'?'selected':''):''}}>Residential</option>
+                               <option value="appartment" {{isset($editProperty->property_type)?($editProperty->property_type=='appartment'?'selected':''):''}}>Appartment</option>
+                            </select>
+                        </div>
+
+                        {{-- <div class="field-wrapper input mb-2 col-6">
                             <label for="property">Property Type</label>
                             <select class="form-control form-small" name="property_type">
                                 @isset($editProperty->property_type)
@@ -117,10 +145,10 @@
                                <option value="residential">Residential</option>
                                <option value="appartment">Appartment</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row mb-4">
-                        <div class="col-6">
+                        {{-- <div class="col-6">
                             <p class="">You are posting as</p>
 
                             <div class="form-check form-check-inline">
@@ -134,7 +162,25 @@
                                     value="on_shairing_basis" />
                                 <label class="form-check-label" for="maleGender">On shairing basis</label>
                             </div>
+                        </div> --}}
+
+                        <div class="col-6">
+                            <p class="">For</p>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="posting_as"  {{isset($editProperty->posting_as)?($editProperty->posting_as=='full_house'?'checked':''):''}} id="maleGender"
+                                    value="rent_lease" />
+                                <label class="form-check-label" for="maleGender" value="full_house">Full House</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="posting_as" {{isset($editProperty->posting_as)?($editProperty->posting_as=='on_shairing_basis'?'checked':''):''}} id="otherGender"
+                                    value="pg_hostel" />
+                                <label class="form-check-label" for="otherGender" value="on_shairing_basis"  >shairing basis</label>
+                            </div>
+                            
                         </div>
+
                         {{-- <div class="col-6">
                             <div class="col-6">
                             <p class="">For</p>
@@ -185,7 +231,7 @@
                     <hr>
                     <h5>Area</h5>
                     <hr>
-                    <div class="row mb-4">
+                    {{-- <div class="row mb-4">
                         <div class="col-6">
                             <label for="carpet_area">Carpet Area</label>
                             <input type="text" class="form-control" name="carpet_area" value="{{$editProperty->carpet_area??''}}" placeholder="First name"
@@ -195,6 +241,27 @@
                             <label for="super_area">Super Area</label>
                             <input type="text" class="form-control" name="super_area" value="{{$editProperty->super_area??''}}" placeholder="super area must be smaller than carpet area"
                                 value="">
+                        </div>
+                    </div> --}}
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label for="carpet_area">Area<sup>sq</sup></label>
+                            <input type="text" class="form-control" name="area" value="{{$editProperty->area??''}}" placeholder="In Like metter square">
+                        </div>
+                        <div class="col-6">
+                            <label for="super_area">Number Of Bedrooms</label>
+                            <input type="number" class="form-control" name="bedroom" value="{{$editProperty->bedroom??''}}" placeholder="Number of bedrooms">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label for="carpet_area">Number Of Bathrooms</label>
+                            <input type="number" class="form-control" name="bathroom" value="{{$editProperty->bathroom??''}}" placeholder="Enter Number of bathrooms"
+                                value="">
+                        </div>
+                        <div class="col-6">
+                            <label for="super_area">Numbers of Grages</label>
+                            <input type="number" class="form-control" name="grage" value="{{$editProperty->grages??''}}" placeholder="Enter number of grages">
                         </div>
                     </div>
                     <hr>

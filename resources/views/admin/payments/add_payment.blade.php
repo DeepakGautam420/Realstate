@@ -8,7 +8,7 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>{{isset($editProperty)?'Update Payment Details':'Add Payment Details'}}</h4>
+                        <h4>{{isset($payment)?'Update Payment Details':'Add Payment Details'}}</h4>
                     </div>
                 </div>
             </div>
@@ -23,10 +23,10 @@
                     </div>
                 @endif
                 
-                <form action="{{isset($editProperty)?route('admin.payments.edit',$editProperty->id):route('admin.payments.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{isset($payment)?route('admin.payments.update',$payment->id):route('admin.payments.store')}}" method="post" enctype="multipart/form-data">
                    
-                    @isset($editProperty)
-                    @method('POST')
+                    @isset($payment)
+                    @method('PATCH')
                     @endisset
                     @csrf
                     <h5>Buyer Detail</h5>
@@ -35,16 +35,16 @@
                         <div class="col-6">
                             <label for="name">Full Name</label>
                             <input type="text" class="form-control" name="fname" placeholder="Enter Name"
-                                value="{{$editProperty->name??''}}">
+                                value="{{$payment->name??''}}">
                         </div>
                         <div class="col-6">
                             <label for="mobile">Mobile Number</label>
                             <input type="number" class="form-control" name="number" placeholder="Mobile Number"
-                                value="{{$editProperty->number??''}}">
+                                value="{{$payment->number??''}}">
                         </div>
                         <div class="col-6">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" name="email" placeholder="Email" value="{{$editProperty->email??''}}">
+                            <input type="text" class="form-control" name="email" placeholder="Email" value="{{$payment->email??''}}">
                         </div>
                     </div>
                     <hr>
@@ -55,31 +55,42 @@
                             <p class="">For</p>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="for_sale"  {{isset($editProperty->for_sale)?($editProperty->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
+                                <input class="form-check-input" type="radio" name="for_sale"  {{isset($payment->for_sale)?($payment->for_sale=='rent_lease'?'checked':''):''}} id="maleGender"
                                     value="rent_lease" />
                                 <label class="form-check-label" for="maleGender" value="rent_lease">Rent/Lease</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="for_sale" {{isset($editProperty->for_sale)?($editProperty->for_sale=='option3'?'checked':''):''}} id="otherGender"
+                                <input class="form-check-input" type="radio" name="for_sale" {{isset($payment->for_sale)?($payment->for_sale=='pg_hostel'?'checked':''):''}} id="otherGender"
                                     value="pg_hostel" />
                                 <label class="form-check-label" for="otherGender" value="pg_hostel"  >PG/Hostel</label>
                             </div>
                             
                         </div>
-                        
+
                         <div class="field-wrapper input mb-2 col-6">
                             <label for="property">Property Type</label>
                             <select class="form-control form-small" name="property_type">
-                                @isset($editProperty->property_type)
-                                <option value="{{$editProperty->property_type??''}}" selected >{{$editProperty->property_type??''}}</option>
+                                
+                                <option selected hidden>--Select Property Type--</option>
+                               <option value="comercial" {{isset($payment->property_type)?($payment->property_type=='comercial'?'selected':''):''}}>Comercial</option>
+                               <option value="residential" {{isset($payment->property_type)?($payment->property_type=='residential'?'selected':''):''}}>Residential</option>
+                               <option value="appartment" {{isset($payment->property_type)?($payment->property_type=='appartment'?'selected':''):''}}>Appartment</option>
+                            </select>
+                        </div>
+                        
+                        {{-- <div class="field-wrapper input mb-2 col-6">
+                            <label for="property">Property Type</label>
+                            <select class="form-control form-small" name="property_type">
+                                @isset($payment->property_type)
+                                <option value="{{$payment->property_type??''}}" selected >{{$payment->property_type??''}}</option>
                                 @endisset
                                 <option selected hidden>--Select Property Type--</option>
                                <option value="comercial">Comercial</option>
                                <option value="residential">Residential</option>
                                <option value="appartment">Appartment</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     
                     <h5>
@@ -89,18 +100,18 @@
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="">Property Location</label>
-                            <input type="text" class="form-control" name="property_location" value="{{$editProperty->property_location??''}}" placeholder="Enter city"
+                            <input type="text" class="form-control" name="property_location" value="{{$payment->property_location??''}}" placeholder="Enter city"
                                 value="">
                         </div>
                         <div class="col-6">
                             <label for="">Name Project/Socity</label>
-                            <input type="text" class="form-control" name="new_project_socity" value="{{$editProperty->new_project_socity??''}}" placeholder="Name Project/Socity" value="">
+                            <input type="text" class="form-control" name="new_project_socity" value="{{$payment->new_project_socity??''}}" placeholder="Name Project/Socity" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="">Address</label>
-                            <input type="text" class="form-control" name="property_address" value="{{$editProperty->property_address??''}}" placeholder="Enter Full Address"
+                            <input type="text" class="form-control" name="property_address" value="{{$payment->property_address??''}}" placeholder="Enter Full Address"
                                 value="">
                         </div>
                     </div>
@@ -110,12 +121,12 @@
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="carpet_area">Carpet Area</label>
-                            <input type="text" class="form-control" name="carpet_area" value="{{$editProperty->carpet_area??''}}" placeholder="First name"
+                            <input type="text" class="form-control" name="carpet_area" value="{{$payment->carpet_area??''}}" placeholder="First name"
                                 value="">
                         </div>
                         <div class="col-6">
                             <label for="super_area">Super Area</label>
-                            <input type="text" class="form-control" name="super_area" value="{{$editProperty->super_area??''}}" placeholder="super area must be smaller than carpet area"
+                            <input type="text" class="form-control" name="super_area" value="{{$payment->super_area??''}}" placeholder="super area must be smaller than carpet area"
                                 value="">
                         </div>
                     </div>
@@ -127,29 +138,29 @@
                         <hr>
                             <div class="col-6">
                                 <label for="Monthly">Rent From</label>
-                                <input type="date" class="form-control" name="from_month" value="{{$editProperty->monthly_rent??''}}" placeholder="Enter Total Rent"
+                                <input type="date" class="form-control" name="from_month" value="{{$payment->from_month??''}}" placeholder="Enter Total Rent"
                                     value="">
                             </div>
                             <div class="col-6">
                                 <label for="security">To</label>
-                                <input type="date" class="form-control" name="to_month" value="{{$editProperty->second_month??''}}" placeholder="Security Amount"
+                                <input type="date" class="form-control" name="to_month" value="{{$payment->to_month??''}}" placeholder="Security Amount"
                                     value="">
                             </div>
                         
                             <div class="col-6">
                                 <label for="Monthly">Manegment Charge</label>
-                                <input type="text" class="form-control" name="managment_charge" value="{{$editProperty->managment_charge??''}}" placeholder="Maintenance charge"
+                                <input type="text" class="form-control" name="managment_charge" value="{{$payment->managment_charge??''}}" placeholder="Maintenance charge"
                                     value="">
                             </div>
                             <div class="col-6">
                                 <label for="security">Security Amount</label>
-                                <input type="text" class="form-control" name="security_amnt" value="{{$editProperty->security_amnt??''}}" placeholder="Security Ammount"
+                                <input type="text" class="form-control" name="security_amnt" value="{{$payment->security_amnt??''}}" placeholder="Security Ammount"
                                     value="">
                             </div>
                         
                             <div class="col-6">
                                 <label for="Monthly">Monthly Rent</label>
-                                <input type="number" class="form-control" name="full_rent" value="{{$editProperty->monthly_rent??''}}" placeholder="Monthly Rent"
+                                <input type="number" class="form-control" name="full_rent" value="{{$payment->full_rent??''}}" placeholder="Monthly Rent"
                                     value="">
                             </div>
                         </div>
@@ -161,18 +172,18 @@
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="Monthly">Upload Property Picture</label>
-                            <input type="file" class="form-control" name="picture[]" placeholder="Maintenance charge"
+                            <input type="file" class="form-control" name="picture" placeholder="Maintenance charge"
                                 value="" multiple>
                         </div>
                         <div class="col-6">
                             <label for="security">Description</label>
-                            <textarea class="form-control" name="desc" rows="1" cols="10">{{$editProperty->desc??'Property Description'}}</textarea>
+                            <textarea class="form-control" name="desc" rows="1" cols="10">{{$payment->desc??'Property Description'}}</textarea>
                         </div>
                     </div>
                   
             </div>
             &nbsp;&nbsp;&nbsp; <button type="submit"
-                class="btn btn-primary mb-2">{{isset($editProperty)?'Update Payment':'Add Payment'}}</button>
+                class="btn btn-primary mb-2">{{isset($payment)?'Update Payment':'Add Payment'}}</button>
             </form>
         </div>
     </div>

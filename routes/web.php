@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AgentController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\PaymentController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Start Register, Login And Logout Admin Pannel
-Route::view('/','frontend/home');
+Route::get('/',[SellPropertyController::class,'Home'])->name('home');
 Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/register-store',[AuthController::class,'registerStore'])->name('registerStore');
 Route::get('/login',[AuthController::class,'login'])->name('login');
@@ -77,9 +78,20 @@ Route::get('sale-property-list',[AgentController::class,'salePropertyList'])->na
 Route::get('proertyemage/{img}',[AgentController::class,'proertyEmage'])->name('proertyimg');
 Route::get('user-property-list',[SellPropertyController::class,'userProperty'])->name('userProperty');
 Route::get('user-sell-property-list',[SellPropertyController::class,'userSellProperty'])->name('userSellProperty');
+Route::get('user-sell-property-edit/{id}',[SellPropertyController::class,'editUserSellProperty'])->name('editUserSellProperty');
+Route::post('user-sell-property-update/{id}',[SellPropertyController::class,'updateUserSellProperty'])->name('updateUserSellProperty');
+Route::get('user-sell-property-delete/{id}',[SellPropertyController::class,'deleteSaleProperty'])->name('deleteSaleProperty');
 
     //Payment details routes
     Route::resource('payments',PaymentController::class);
+
+//Dynamic Content
+Route::get('upcoming-property',[AdminController::class,'UpcomingSale'])->name('upcoming_sale');
+Route::post('upcoming-property',[AdminController::class,'StoreUpcomingSale'])->name('save_upcoming_sale');
+Route::get('upcoming-property_edit/{id}',[AdminController::class,'EditUpcomingSale'])->name('edit_upcoming_sale');
+Route::post('upcoming-property/{id}',[AdminController::class,'UpdateUpcomingSale'])->name('update_upcoming_sale');
+Route::get('upcoming-property/{id}',[AdminController::class,'deleteUpcomingSale'])->name('delete_upcoming_sale');
+
 });
 
 Route::get('user-login',[LoginController::class,'user'])->name('userLogin');

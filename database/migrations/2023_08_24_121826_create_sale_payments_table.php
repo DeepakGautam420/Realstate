@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('sale_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('role');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('number');
             $table->string('for_sale');
             $table->string('property_type');
-            $table->string('posting_as');
             $table->string('property_location');
             $table->string('new_project_socity');
             $table->string('property_address');

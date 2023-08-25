@@ -5,8 +5,10 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
 use App\Models\SellProperty;
+use App\Models\UpcomingSale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class SellPropertyController extends Controller
 {
@@ -151,4 +153,76 @@ class SellPropertyController extends Controller
     {
         return view('admin.property.userSaleProperty');
     }
+
+    /**
+     * Home controller
+     */
+    public function Home()
+    {
+        $latest = Agent::orderBy('id','desc')
+        ->limit(4)->get();
+
+        $UpcomingSale = UpcomingSale::orderBy('id','desc')
+        ->limit(4)->get();
+
+        // dd($latest);
+        return view('frontend/home',compact('latest','UpcomingSale'));
+    }
+
+    public function editUserSellProperty($id)
+    {
+        $id=Crypt::decrypt($id);
+        $propertyEdit=SellProperty::find($id);
+        return view('admin.property.userSaleProperty',compact('propertyEdit'));
+    }
+
+    public function updateUserSellProperty(Request $request,$id)
+    {
+        $otherpic = [];
+
+        if ($request->hasFile('picture')) {
+            foreach ($request->file('picture') as $file) {
+                $opn = $file->getClientOriginalName();
+                $op = explode('.', $opn);
+                $name = $op[0] . '-' . time() . '-' . rand(0, 99) . '.' . $op[1];
+                $name = str_replace(' ', '-', trim($name, ' '));
+                $name = strtolower($name);
+                $file->move(public_path('upload/property'), $name);
+                $otherpic[] = $name;
+            }
+        }
+
+        {$data = SellProperty::find($id)->update([
+            'name' => $request->oname,
+            'email' => $request->email,
+            'mobile' => $request->number,
+            'address' => $request->address,
+            'city' => $request->city,
+            'locality' => $request->locality,
+            'price' => $request->price,
+            'area' => $request->area,
+            'description' => $request->desc,
+            'image' => json_encode($otherpic),
+        ]);
+            if ($data) {
+                return redirect()->back()->with('success', 'Successfully ! Updated');
+            } else {
+                return redirect()->back()->with('error', 'Something Went Wrong');
+            }
+    }
+    }
+
+    public function deleteSaleProperty($id)
+
+    {
+        $id=Crypt::decrypt($id);
+        $delprpt=SellProperty::find($id)->delete();
+        if ($delprpt) {
+            return redirect()->back()->with('success', 'Successfully ! Deleted');
+        } else {
+            return redirect()->back()->with('error', 'Something Went Wrong');
+        }
 }
+    }
+
+

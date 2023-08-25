@@ -2,81 +2,67 @@
 @section('style-area')
 @endsection
 @section('content-area')
-    <!-- user tables -->
+    <!-- Sale Property tables -->
     <div class="col-lg-12 col-md-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Property Tables</h4>
+                        <h4>Payment Tables</h4>
                     </div>
                 </div>
             </div>
+            {{-- {{$payment}} --}}
             <div class="widget-content widget-content-area">
+                <h5>Total Rent List :  {{isset($sale)?count($sale):''}}</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered mb-4">
                         <thead>
                             <tr>
                                 <th>Sr.</th>
-                                <th>Role</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>For Sale</th>
                                 <th>Property Type</th>
-                                <th>Posting As</th>
                                 <th>Property Location</th>
-                                <th>New Project Socity</th>
+                                <th>New Project</th>
                                 <th>Property Address</th>
-                                <th>Area</th>
-                                <th>Bedroom</th>
-                                <th>Bathroom</th>
-                                <th>Grages</th>
-                                <th>To Month</th>
+                                <th>Carpet Area</th>
+                                <th>Super Area</th>
                                 <th>From Month</th>
-                                <th>Full Rent</th>
-                                <th>Security Ammount</th>
+                                <th>To Month</th>
+                                <th>Security Amount</th>
                                 <th>Managment Charge</th>
                                 <th>Picture</th>
                                 <th>Description</th>
-                                <th>Property Status</th>
+                                <th>Full Rent</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($properties as $user)
+                            @foreach ($payment as $pmnt)
                             <tr>
                                 <th>{{$loop-> index+1}}</th>
-                                <td>{{$user->role ?? ''}}</td>
-                                <td>{{$user->name ?? ''}}</td>
-                                <td>{{$user->email ?? ''}}</td>
-                                <td> {{$user->number ?? ''}}</td>
-                                <td> {{$user->for_sale ?? ''}}</td>
-                                <td> {{$user->property_type ?? ''}}</td>
-                                <td> {{$user->posting_as ?? ''}}</td>
-                                <td> {{$user->property_location ?? ''}}</td>   
-                                <td> {{$user->new_project_socity ?? ''}}</td>
-                                <td> {{$user->property_address ?? ''}}</td>
-                                <td> {{$user->area ?? ''}}</td>
-                                <td> {{$user->bedroom ?? ''}}</td>
-                                <td> {{$user->bathroom ?? ''}}</td>
-                                <td> {{$user->grage ?? ''}}</td>
-                                <td> {{$user->to_month ?? ''}}</td>
-                                <td> {{$user->from_month ?? ''}}</td>
-                                <td> {{$user->full_rent ?? ''}}</td>
-                                <td> {{$user->security_amnt ?? ''}}</td>
-                                <td> {{$user->managment_charge ?? ''}}</td>
-                                <td> 
-                                    @if(isset($user->picture))
-                                    @php
-                                        $imgs = json_decode($user->picture);
-                                    @endphp
-                                    @endif
-                                        <a href='{{route("admin.proertyimg",$user->picture)}}'><img src="{{asset('upload/product/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
-                                </td>
-                                <td> {{$user->description ?? ''}}</td>
-                                <td> {{$user->property_status ?? ''}}</td>
-                                <td class="text-center">    
+                                <td>{{$pmnt->name ?? ''}}</td>
+                                <td>{{$pmnt->email ?? ''}}</td>
+                                <td> {{$pmnt->number ?? ''}}</td>
+                                <td> {{$pmnt->for_sale ?? ''}}</td>
+                                <td> {{$pmnt->property_type ?? ''}}</td>
+                                <td> {{$pmnt->property_location ?? ''}}</td>
+                                <td> {{$pmnt->new_project_socity ?? ''}}</td>
+                                <td> {{$pmnt->property_address ?? ''}}</td>
+                                <td> {{$pmnt->carpet_area ?? ''}}</td>
+                                <td> {{$pmnt->super_area ?? ''}}</td>
+                                <td> {{$pmnt->from_month ?? ''}}</td>
+                                <td> {{$pmnt->to_month ?? ''}}</td>
+                                <td> {{$pmnt->security_amnt ?? ''}}</td>
+                                <td> {{$pmnt->managment_charge ?? ''}}</td>
+                                <td><img class="rounded" src="{{ asset($pmnt->picture) }}"
+                                        alt="" width="50px" height="50px"></td>
+                                <td> {{$pmnt->description ?? ''}}</td>
+                                <td> {{$pmnt->full_rent ?? ''}}</td>
+                                <td class="text-center">
                                     <div class="dropdown custom-dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,11 +76,15 @@
                                             </svg>
                                         </a>
                                         @php
-                                        $bid=Crypt::encrypt($user->id);
+                                        $bid=Crypt::encrypt($pmnt->id);
                                         @endphp
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                            <a class="dropdown-item" href="{{route('admin.agentEdit',$bid)}}">Edit</a>
-                                            <a class="dropdown-item" href="{{route('admin.deleteAgent',$bid)}}">Delete</a>
+                                            <a class="dropdown-item" href="{{route('admin.payments.edit',$bid)}}">Edit</a>
+                                            <form action="{{route('admin.payments.destroy',$bid)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item btn btn-danger mt-1"><i class="bx bx-trash me-1"></i>  Delete</button>
+                                                </form>
                                         </div>
                                     </div>
                                 </td>
@@ -105,7 +95,7 @@
                     {{-- {!! $properties->links() !!} --}}
                    
                 </div><br>
-                {!! $properties->links('pagination::bootstrap-5') !!}
+                {{-- {!! $sale->links('pagination::bootstrap-5') !!} --}}
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
                                 <th>Price</th>
                                 <th>Area</th>
                                 <th>Description</th>
-                                {{-- <th class="text-center">Action</th> --}}
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,14 +44,14 @@
                                 <td> {{$prpty->area ?? ''}}</td>
                                 <td> {{$prpty->description ?? ''}}</td>
                                 {{-- <td> 
-                                    @if(isset($user->picture))
+                                    @if(isset($prpty->picture))
                                     @php
-                                        $imgs = json_decode($user->picture);
+                                        $imgs = json_decode($prpty->picture);
                                     @endphp
                                     @endif
-                                        <a href='{{route("admin.proertyimg",$user->picture)}}'><img src="{{asset('upload/property/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
+                                        <a href='{{route("admin.proertyimg",$prpty->picture)}}'><img src="{{asset('upload/property/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
                                 </td> --}}
-                                {{-- <td class="text-center">
+                                <td class="text-center">
                                     <div class="dropdown custom-dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,14 +65,14 @@
                                             </svg>
                                         </a>
                                         @php
-                                        $bid=Crypt::encrypt($user->id);
+                                        $bid=Crypt::encrypt($prpty->id);
                                         @endphp
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                            <a class="dropdown-item" href="{{route('admin.agentEdit',$bid)}}">Edit</a>
-                                            <a class="dropdown-item" href="{{route('admin.deleteAgent',$bid)}}">Delete</a>
+                                            <a class="dropdown-item" href="{{route('admin.editUserSellProperty',$bid)}}">Edit</a>
+                                            <a class="dropdown-item" href="{{route('admin.deleteSaleProperty',$bid)}}">Delete</a>
                                         </div>
                                     </div>
-                                </td> --}}
+                                </td>
                             </tr>
                                 @endforeach
                         </tbody>

@@ -117,23 +117,27 @@
 
             <div id="property-carousel" class="swiper">
                 <div class="swiper-wrapper">
-
+                        @foreach($latest as $ltst)
                     <div class="carousel-item-b swiper-slide">
                         <div class="card-box-a card-shadow">
                             <div class="img-box-a">
-                                <img src="{{asset('frontend/assets/img/property-6.jpg')}}" alt="" class="img-a img-fluid">
+                                @php
+                                $pctr=json_decode($ltst->picture);
+                                
+                                @endphp
+                                <img src="{{asset('upload/product/'.$pctr[0]??'')}}" alt="" class="img-a img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="property-single.html">206 Mount
-                                                <br /> Olive Road Two</a>
-                                        </h2>
+                                        <h4 class="card-title-a">
+                                            <a href="property-single.html">{{$ltst->property_address}}
+                                                <br /> {{$ltst->new_project_socity}}</a>
+                                        </h4>
                                     </div>
                                     <div class="card-body-a">
                                         <div class="price-box d-flex">
-                                            <span class="price-a">rent | $ 12.000</span>
+                                            <span class="price-a">rent | {{$ltst->full_rent}}</span>
                                         </div>
                                         <a href="#" class="link-a">Click here to view
                                             <span class="bi bi-chevron-right"></span>
@@ -143,21 +147,21 @@
                                         <ul class="card-info d-flex justify-content-around">
                                             <li>
                                                 <h4 class="card-info-title">Area</h4>
-                                                <span>340m
+                                                <span>{{$ltst->area}}
                                                     <sup>2</sup>
                                                 </span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">Beds</h4>
-                                                <span>2</span>
+                                                <span>{{$ltst->bedroom}}</span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">Baths</h4>
-                                                <span>4</span>
+                                                <span>{{$ltst->bathroom}}</span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">Garages</h4>
-                                                <span>1</span>
+                                                <span>{{$ltst->grage}}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -165,8 +169,8 @@
                             </div>
                         </div>
                     </div><!-- End carousel item -->
-
-                    <div class="carousel-item-b swiper-slide">
+@endforeach
+                    {{-- <div class="carousel-item-b swiper-slide">
                         <div class="card-box-a card-shadow">
                             <div class="img-box-a">
                                 <img src="{{asset('frontend/assets/img/property-3.jpg')}}" alt="" class="img-a img-fluid">
@@ -313,7 +317,7 @@
             </div>
             <div class="propery-carousel-pagination carousel-pagination"></div>
 
-        </div>
+        </div> --}}
     </section><!-- End Latest Properties Section -->
 
     <!-- ======= Agents Section ======= -->
@@ -513,10 +517,10 @@
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
                         <div class="title-box">
-                            <h2 class="title-a">Latest News</h2>
+                            <h2 class="title-a">Upcoming Properties</h2>
                         </div>
                         <div class="title-link">
-                            <a href="blog-grid.html">All News
+                            <a href="blog-grid.html">All Properties
                                 <span class="bi bi-chevron-right"></span>
                             </a>
                         </div>
@@ -526,32 +530,37 @@
 
             <div id="news-carousel" class="swiper">
                 <div class="swiper-wrapper">
-
+                    @isset($UpcomingSale)
+                    @foreach($UpcomingSale as $datalist)
                     <div class="carousel-item-c swiper-slide">
                         <div class="card-box-b card-shadow news-box">
                             <div class="img-box-b">
-                                <img src="{{asset('frontend/assets/img/post-2.jpg')}}" alt="" class="img-b img-fluid">
+                                <img src="{{asset('upload/upcoming/'.$datalist->image??'')}}" alt="" class="img-b img-fluid">
+                                {{-- <img src="{{asset('frontend/assets/img/post-2.jpg')}}" alt="" class="img-b img-fluid"> --}}
                             </div>
                             <div class="card-overlay">
                                 <div class="card-header-b">
                                     <div class="card-category-b">
-                                        <a href="#" class="category-b">House</a>
+                                        <a href="#" class="category-b">{{$datalist->city??''}} , {{$datalist->state??''}} , {{$datalist->locality??''}}</a>
                                     </div>
                                     <div class="card-title-b">
                                         <h2 class="title-2">
-                                            <a href="blog-single.html">House is comming
+                                            <a href="blog-single.html">{{$datalist->price??''}}<br/>{{$datalist->area?$datalist->area:''}} m<sup>2</sup>
                                                 <br> new</a>
                                         </h2>
                                     </div>
                                     <div class="card-date">
-                                        <span class="date-b">18 Sep. 2017</span>
+                                        <span class="date-b">Uploaded at : {{$datalist->created_at??''}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End carousel item -->
+                    </div>
+                    @endforeach
+                    @endif
+                    <!-- End carousel item -->
 
-                    <div class="carousel-item-c swiper-slide">
+                    {{-- <div class="carousel-item-c swiper-slide">
                         <div class="card-box-b card-shadow news-box">
                             <div class="img-box-b">
                                 <img src="{{asset('frontend/assets/img/post-5.jpg')}}" alt="" class="img-b img-fluid">
@@ -621,14 +630,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End carousel item -->
+                    </div> --}}
+                    <!-- End carousel item -->
 
                 </div>
             </div>
 
             <div class="news-carousel-pagination carousel-pagination"></div>
         </div>
-    </section><!-- End Latest News Section -->
+    </section>
+    
+    <!-- End Latest News Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <section class="section-testimonials section-t8 nav-arrow-a">

@@ -25,8 +25,10 @@ return new class extends Migration
             $table->string('property_location');
             $table->string('new_project_socity');
             $table->string('property_address');
-            $table->string('carpet_area');
-            $table->string('super_area');
+            $table->string('area');
+            $table->string('grage');
+            $table->string('bathroom');
+            $table->string('bedroom');
             $table->string('from_month');
             $table->string('to_month');
             $table->string('security_amnt');

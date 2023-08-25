@@ -7,8 +7,9 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        {{-- <h4>{{ isset($editProperty) ? 'Update Property' : 'Add Property' }}</h4> --}}
-                        <h4>Add Property</h4>
+                        <h4>{{ isset($propertyEdit) ? 'Update Property' : 'Add Property' }}</h4>
+                        {{-- <h4>Add Property</h4> --}}
+                        {{-- {{$propertyEdit}} --}}
                     </div>
                 </div>
             </div>
@@ -23,11 +24,11 @@
                     </div>
                 @endif
 
-                {{-- <form action="{{ isset($editProperty) ? route('admin.updateAgentDetail', $editProperty->id) : route('admin.storeAgentDetail') }}" method="post" enctype="multipart/form-data"> --}}
-                    <form action="{{route('storeSellProperty')}}" method="post" enctype="multipart/form-data">
-                    {{-- @isset($editProperty)
+                <form action="{{ isset($propertyEdit) ? route('admin.updateUserSellProperty', $propertyEdit->id) : route('admin.storeSellProperty') }}" method="post" enctype="multipart/form-data">
+                    {{-- <form action="{{route('storeSellProperty')}}" method="post" enctype="multipart/form-data"> --}}
+                    @isset($propertyEdit)
                         @method('POST')
-                    @endisset --}}
+                    @endisset
                     @csrf
                     <h5>Personal Detail</h5>
                     <hr>
@@ -35,7 +36,7 @@
                         <div class="col-12">
                             <label for="name">Full Name</label>
                             <input type="text" class="form-control" name="oname" id="name" placeholder="Enter Name"
-                                value="">
+                                value="{{$propertyEdit->name??''}}">
                         </div>
                     </div>
 
@@ -43,12 +44,12 @@
                         <div class="col-6">
                             <label for="mobile">Mobile Number</label>
                             <input type="number" class="form-control" name="number" id="mobile" placeholder="Mobile Number"
-                                value="">
+                            value="{{$propertyEdit->mobile??''}}">
                         </div>
                         <div class="col-6">
                             <label for="email">Email</label>
                             <input type="text" class="form-control" name="email" id="email" placeholder="Email"
-                                value="">
+                            value="{{$propertyEdit->email??''}}">
                         </div>
                     </div>
                     <hr>
@@ -56,26 +57,26 @@
                         <div class="col-6">
                             <label for="address">Address</label>
                             <input type="text" class="form-control" name="address"
-                                value="" placeholder="Enter Address" value="" id="address">
+                            value="{{$propertyEdit->address??''}}" placeholder="Enter Address" value="" id="address">
                         </div>
                         <div class="col-6">
                             <label for="city">City</label>
                             <input type="text" class="form-control" name="city"
-                                value="" placeholder="Enter City" id="city"
-                                value="">
+                            value="{{$propertyEdit->city??''}}" placeholder="Enter City" id="city"
+                                >
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="locality">Locality</label>
                             <input type="text" class="form-control" name="locality"
-                                value="" placeholder="Enter Locality" id="locality"
-                                value="">
+                            value="{{$propertyEdit->locality??''}}" placeholder="Enter Locality" id="locality"
+                               >
                         </div>
                         <div class="col-6">
                             <label for="state">State</label>
                             <input type="text" class="form-control" name="state"
-                                value="" placeholder="Enter State" >
+                            value="{{$propertyEdit->state??''}}" placeholder="Enter State" >
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -83,13 +84,13 @@
                         <div class="col-6">
                             <label for="area">Area</label>
                             <input type="text" class="form-control" id="area" name="area"
-                                placeholder="Enter Your Area" value="">
+                                placeholder="Enter Your Area" value="{{$propertyEdit->area??''}}">
                         </div>
                         <div class="col-6">
                             <label for="price">Price</label>
-                            <input type="date" class="form-control" id="price" name="price"
+                            <input type="text" class="form-control" id="price" name="price"
                                placeholder="Enter Legal Price"
-                                value="">
+                               value="{{$propertyEdit->price??''}}">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -100,7 +101,7 @@
                         </div>
                         <div class="col-6">
                             <label for="desc">Description</label>
-                            <textarea class="form-control" name="desc" id="desc" rows="1" cols="10"></textarea>
+                            <textarea class="form-control" name="desc" id="desc" rows="1" cols="10">{{$propertyEdit->description??''}}</textarea>
                         </div>
                     </div>
                     {{--   <div class="row mb-4">
@@ -119,8 +120,8 @@
                 </div> --}}
             </div>
             &nbsp;&nbsp;&nbsp; <button type="submit"
-                {{-- class="btn btn-primary mb-2">{{ isset($editProperty) ? 'Update Property' : 'Add Property' }}</button> --}}
-                class="btn btn-primary mb-2">Add Property</button>
+                class="btn btn-primary mb-2">{{ isset($propertyEdit) ? 'Update Property' : 'Add Property' }}</button>
+                {{-- class="btn btn-primary mb-2">Add Property</button> --}}
             </form>
         </div>
     </div>
