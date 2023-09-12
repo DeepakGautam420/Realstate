@@ -92,7 +92,7 @@
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
-                                            <button type="button" class="btn btn-outline-danger"><a href="{{route('userSignUp')}}">Create new</a></button>
+                                            <button type="button" class="btn btn-outline-danger"><a href="{{route('register')}}">Create new</a></button>
                                         </div>
 
                                     </form>

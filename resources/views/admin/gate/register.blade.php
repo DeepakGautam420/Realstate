@@ -72,6 +72,18 @@
                                     <input id="email" name="email" type="text" value="{{ $agent->email ?? '' }}"
                                         class="form-control" placeholder="Email">
                                 </div>
+                                <div id="mobile-field" class="field-wrapper input">
+                                    <label for="mobile">Mobile</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-at-sign register">
+                                        <circle cx="12" cy="12" r="4"></circle>
+                                        <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                    </svg>
+                                    <input id="mobile" name="mobile" type="number" value="{{ $agent->number ?? '' }}"
+                                        class="form-control" placeholder="Mobile Number">
+                                </div>
                                 @if (isset($agent))
                                     <div id="password-field" class="field-wrapper input mb-2">
 
@@ -147,10 +159,10 @@
                                         {{-- @foreach ($editProperty as $edit)
                                         <option value="{{$edit->id}}">{{$edit->role}}</option>
                                     @endforeach --}}
-                                        <option value="Hr">HR</option>
-                                        <option value="Customer">Customer</option>
-                                        <option value="Agent">Agent</option>
-                                        <option value="Owner">Owner</option>
+                                        <option value="hr">HR</option>
+                                        <option value="customer">Customer</option>
+                                        <option value="agent">Agent</option>
+                                        <option value="owner">Owner</option>
 
                                     </select>
                                 </div>
@@ -243,6 +255,19 @@
                                     <input id="email" name="email" type="text" value="{{ $owner->email ?? '' }}"
                                         class="form-control" placeholder="Email">
                                 </div>
+
+                                <div id="mobile-field" class="field-wrapper input">
+                                    <label for="mobile">Mobile</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-at-sign register">
+                                        <circle cx="12" cy="12" r="4"></circle>
+                                        <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                    </svg>
+                                    <input id="mobile" name="mobile" type="Mobile" value="{{ $owner->number ?? '' }}"
+                                        class="form-control" placeholder="Mobile Number">
+                                </div>
                                 @if (isset($owner))
                                     <div id="password-field" class="field-wrapper input mb-2">
 
@@ -318,10 +343,10 @@
                                         {{-- @foreach ($editProperty as $edit)
                                         <option value="{{$edit->id}}">{{$edit->role}}</option>
                                     @endforeach --}}
-                                        <option value="Hr">HR</option>
-                                        <option value="Customer">Customer</option>
-                                        <option value="Agent">Agent</option>
-                                        <option value="Owner">Owner</option>
+                                        <option value="hr">HR</option>
+                                        <option value="customer">Customer</option>
+                                        <option value="agent">Agent</option>
+                                        <option value="owner">Owner</option>
 
                                     </select>
                                 </div>
@@ -407,6 +432,18 @@
                                 <input id="email" name="email" type="text" value=""
                                     class="form-control" placeholder="Email">
                             </div>
+                            <div id="mobile-field" class="field-wrapper input">
+                                <label for="mobile">Mobile</label>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-at-sign register">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                </svg>
+                                <input id="mobile" name="mobile" type="number" value=""
+                                    class="form-control" placeholder="Mobile">
+                            </div>
                                 <div id="password-field" class="field-wrapper input mb-2">
 
                                     <div class="d-flex justify-content-between">
@@ -447,13 +484,9 @@
                             <div class="field-wrapper input mb-2">
                                 <select class="form-control form-small" name="role">
                                     <option value="">--Select Role--</option>
-                                    {{-- @foreach ($editProperty as $edit)
-                                    <option value="{{$edit->id}}">{{$edit->role}}</option>
-                                @endforeach --}}
-                                    <option value="Hr">HR</option>
-                                    <option value="Customer">Customer</option>
-                                    <option value="Agent">Agent</option>
-                                    <option value="Owner">Owner</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="agent">Agent</option>
+                                    <option value="owner">Owner</option>
 
                                 </select>
                             </div>

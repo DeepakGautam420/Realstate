@@ -4,6 +4,8 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\AgentInfo;
+use App\Models\ContactUs;
 use App\Models\SellProperty;
 use App\Models\UpcomingSale;
 use Illuminate\Http\Request;
@@ -25,6 +27,7 @@ class SellPropertyController extends Controller
             'oname' => 'required',
             'email' => 'required|email',
             'number' => 'required',
+            'state' => 'required',
             'address' => 'required',
             'city' => 'required',
             'locality' => 'required',
@@ -47,9 +50,8 @@ class SellPropertyController extends Controller
             }
         }
 
-        if (Auth::user()) 
-        {$data = SellProperty::create([
-            'role' =>Auth::user()->roles[0]->name,
+        if (Auth::user()) {$data = SellProperty::create([
+            'role' => Auth::user()->roles[0]->name,
             'login_status' => '1',
             'name' => $request->oname,
             'email' => $request->email,
@@ -59,6 +61,7 @@ class SellPropertyController extends Controller
             'locality' => $request->locality,
             'price' => $request->price,
             'area' => $request->area,
+            'state' => $request->state,
             'description' => $request->desc,
             'image' => json_encode($otherpic),
         ]);
@@ -70,31 +73,31 @@ class SellPropertyController extends Controller
             } else {
                 return redirect()->back()->with('error', 'Something Went Wrong');
             }
-        }
-        else{
+        } else {
 
             $data = SellProperty::create([
-            'role' => 'customer',
-            'login_status' => '0',
-            'name' => $request->oname,
-            'email' => $request->email,
-            'mobile' => $request->number,
-            'address' => $request->address,
-            'city' => $request->city,
-            'locality' => $request->locality,
-            'price' => $request->price,
-            'area' => $request->area,
-            'description' => $request->desc,
-            'image' => json_encode($otherpic),
-        ]);
-        // dd($data);
-        if ($data) {
-            return redirect()->back()->with('success', 'Successfully ! Submitted');
-            // Handle the exception, display an error message, or log the error
-            // For example:
-        } else {
-            return redirect()->back()->with('error', 'Something Went Wrong');
-        }
+                'role' => 'customer',
+                'login_status' => '0',
+                'name' => $request->oname,
+                'email' => $request->email,
+                'mobile' => $request->number,
+                'address' => $request->address,
+                'city' => $request->city,
+                'locality' => $request->locality,
+                'price' => $request->price,
+                'area' => $request->area,
+                'state' => $request->state,
+                'description' => $request->desc,
+                'image' => json_encode($otherpic),
+            ]);
+            // dd($data);
+            if ($data) {
+                return redirect()->back()->with('success', 'Successfully ! Submitted');
+                // Handle the exception, display an error message, or log the error
+                // For example:
+            } else {
+                return redirect()->back()->with('error', 'Something Went Wrong');
+            }
         }
     }
 
@@ -112,7 +115,7 @@ class SellPropertyController extends Controller
 
     public function salePropertyList()
     {
-        $sale = Agent::where('for_sale', 'sale')->get();
+        $sale = SellProperty::get();
         return view('frontend.salePropertyList', compact('sale'));
     }
 
@@ -142,7 +145,7 @@ class SellPropertyController extends Controller
     public function saleOverView($id)
     {
         // dd($id);
-        $sale = Agent::where('for_sale', 'sale')->find($id);
+        $sale = SellProperty::find($id);
 
         return view('frontend.singleSale', compact('sale'));
 
@@ -159,24 +162,25 @@ class SellPropertyController extends Controller
      */
     public function Home()
     {
-        $latest = Agent::orderBy('id','desc')
-        ->limit(4)->get();
+        $latest = Agent::orderBy('id', 'desc')
+            ->limit(4)->get();
 
-        $UpcomingSale = UpcomingSale::orderBy('id','desc')
-        ->limit(4)->get();
+        $UpcomingSale = UpcomingSale::orderBy('id', 'desc')
+            ->limit(4)->get();
 
+        $agents = AgentInfo::get();
         // dd($latest);
-        return view('frontend/home',compact('latest','UpcomingSale'));
+        return view('frontend/home', compact('latest', 'UpcomingSale', 'agents'));
     }
 
     public function editUserSellProperty($id)
     {
-        $id=Crypt::decrypt($id);
-        $propertyEdit=SellProperty::find($id);
-        return view('admin.property.userSaleProperty',compact('propertyEdit'));
+        $id = Crypt::decrypt($id);
+        $propertyEdit = SellProperty::find($id);
+        return view('admin.property.userSaleProperty', compact('propertyEdit'));
     }
 
-    public function updateUserSellProperty(Request $request,$id)
+    public function updateUserSellProperty(Request $request, $id)
     {
         $otherpic = [];
 
@@ -192,7 +196,7 @@ class SellPropertyController extends Controller
             }
         }
 
-        {$data = SellProperty::find($id)->update([
+        { $data = SellProperty::find($id)->update([
             'name' => $request->oname,
             'email' => $request->email,
             'mobile' => $request->number,
@@ -209,20 +213,20 @@ class SellPropertyController extends Controller
             } else {
                 return redirect()->back()->with('error', 'Something Went Wrong');
             }
-    }
+        }
     }
 
     public function deleteSaleProperty($id)
-
     {
-        $id=Crypt::decrypt($id);
-        $delprpt=SellProperty::find($id)->delete();
+        $id = Crypt::decrypt($id);
+        $delprpt = SellProperty::find($id)->delete();
         if ($delprpt) {
             return redirect()->back()->with('success', 'Successfully ! Deleted');
         } else {
             return redirect()->back()->with('error', 'Something Went Wrong');
         }
-}
     }
 
+    
 
+}

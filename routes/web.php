@@ -37,6 +37,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'auth'],function(
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');
     Route::get('/user-profile',[AuthController::class,'userProfile'])->name('userProfile');
     Route::get('/change-password',[AuthController::class,'changePassword'])->name('changePassword');
+    Route::post('/store-change-password',[AuthController::class,'storeChangePassword'])->name('storeChangePassword');
 
     // Start Role
     Route::get('/roles',[RoleController::class,'roles'])->name('roles');
@@ -82,6 +83,12 @@ Route::get('user-sell-property-edit/{id}',[SellPropertyController::class,'editUs
 Route::post('user-sell-property-update/{id}',[SellPropertyController::class,'updateUserSellProperty'])->name('updateUserSellProperty');
 Route::get('user-sell-property-delete/{id}',[SellPropertyController::class,'deleteSaleProperty'])->name('deleteSaleProperty');
 
+Route::get('add-agents',[AgentController::class,'addAgents'])->name('addAgents');
+Route::post('store-agents',[AgentController::class,'storeAgents'])->name('storeAgents');
+
+
+Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');
+Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
     //Payment details routes
     Route::resource('payments',PaymentController::class);
 
@@ -92,20 +99,23 @@ Route::get('upcoming-property_edit/{id}',[AdminController::class,'EditUpcomingSa
 Route::post('upcoming-property/{id}',[AdminController::class,'UpdateUpcomingSale'])->name('update_upcoming_sale');
 Route::get('upcoming-property/{id}',[AdminController::class,'deleteUpcomingSale'])->name('delete_upcoming_sale');
 
+Route::get('contact-us-list',[ContactUsController::class,'contactUsList'])->name('contactUsList');
+Route::get('delete-contact-us/{id}',[ContactUsController::class,'deleteContactUs'])->name('deleteContactUsList');
+
 });
 
 Route::get('user-login',[LoginController::class,'user'])->name('userLogin');
-Route::get('user-sign-up',[LoginController::class,'signUp'])->name('userSignUp');
-Route::post('store-user-sign-up',[LoginController::class,'storeSignUp'])->name('signUpstore');
+// Route::get('user-sign-up',[LoginController::class,'signUp'])->name('userSignUp');
+// Route::post('store-user-sign-up',[LoginController::class,'storeSignUp'])->name('signUpstore');
 Route::post('user-login',[LoginController::class,'userLoginStore'])->name('userLogin');
 Route::get('contact-us',[ContactUsController::class,'contactUs'])->name('contactUs');
 Route::post('store-contact-us',[ContactUsController::class,'storeContactUs'])->name('storeContactUs');
 Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
-Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');
-Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
 Route::get('rent-property-list',[SellPropertyController::class,'rentPropertyList'])->name('rentPropertyList');
 Route::get('pg-hostel-property-list',[SellPropertyController::class,'pgPropertyList'])->name('pgPropertyList');
 Route::get('sell-property-list',[SellPropertyController::class,'salePropertyList'])->name('salePropertyList');
 Route::get('show-one-one-property/{id}',[SellPropertyController::class,'propertyOverView'])->name('propertyOverView');
 Route::get('show-rent-lease-property/{id}',[SellPropertyController::class,'rentLeaseOverView'])->name('rentLeaseOverView');
 Route::get('show-sale-property/{id}',[SellPropertyController::class,'saleOverView'])->name('saleOverView');
+Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
+Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');

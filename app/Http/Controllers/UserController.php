@@ -24,12 +24,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'roles.*' => 'required'
+            'roles.*' => 'required',
+            'mobile' => 'required',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
         ]);
         $role_name = [];
@@ -57,15 +59,17 @@ class UserController extends Controller
 
     public function userUpdate(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'roles.*' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'mobile' => 'required',
+        //     'roles.*' => 'required'
+        // ]);
 
         $user = User::find($id)->update([
             'name' => $request->name,
             'email' => $request->email,
+            'mobile' => $request->mobile,
         ]);
         $role_name = [];
         foreach ($request->roles as $role) {
@@ -84,7 +88,7 @@ class UserController extends Controller
     public function userDelete($id)
     {
         $id = Crypt::decrypt($id);
-        $delete = User::find($id);
+        $delete = User::find($id)->delete();
         if ($delete) {
             return redirect()->back()->with('success', 'User deleted successfully !');
         } else {

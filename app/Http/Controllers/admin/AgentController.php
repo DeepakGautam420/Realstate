@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\AgentInfo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -248,5 +249,52 @@ class AgentController extends Controller
     {
         $sale = Agent::where('for_sale', 'sale')->paginate(4);
         return view('admin.property.salePropertyList', compact('sale'));
+    }
+
+    public function addAgents()
+    {
+        return view('admin.agents.addAgents');
+    }
+
+    public function storeAgents(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'desc' => 'required',
+            'fb_link' => 'required',
+            'twiter_link' => 'required',
+            'insta_link' => 'required',
+            'linkdine_link' => 'required',
+            'file' => 'required|image',
+        ]);
+        $image='';
+        if($request->hasFile('file'))
+        {
+          $image='property-'.time().'-'.rand(0,99).'.'.$request->file->extension();
+          $request->file->move(public_path('upload/agent/profile/'),$image);
+          $image ='upload/agent/profile/'.$image;
+        }
+
+        $res = AgentInfo::create([
+            'name' => $request->name,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'fb_link' => $request->fb_link,
+            'insta_link' => $request->insta_link,
+            'twiter_link' => $request->twiter_link ,
+            'linkdine_link' => $request->linkdine_link,
+            'description' => $request->desc,
+            'file' => $image,
+            
+
+        ]);
+        if ($res) {
+            return redirect()->back()->with('success', 'Successfully');
+        } else {
+            return redirect()->back()->with('error', 'Some Thing Went Wrong');
+        }
     }
 }

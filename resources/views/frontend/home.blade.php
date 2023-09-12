@@ -7,7 +7,7 @@
 
     <!-- ======= Services Section ======= -->
     <section class="section-services section-t8">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
@@ -99,7 +99,7 @@
 
     <!-- ======= Latest Properties Section ======= -->
     <section class="section-property section-t8">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
@@ -107,7 +107,7 @@
                             <h2 class="title-a">Latest Properties</h2>
                         </div>
                         <div class="title-link">
-                            <a href="property-grid.html">All Property
+                            <a href="#">All Property
                                 <span class="bi bi-chevron-right"></span>
                             </a>
                         </div>
@@ -131,7 +131,7 @@
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h4 class="card-title-a">
-                                            <a href="property-single.html">{{$ltst->property_address}}
+                                            <a href="#">{{$ltst->property_address}}
                                                 <br /> {{$ltst->new_project_socity}}</a>
                                         </h4>
                                     </div>
@@ -322,7 +322,7 @@
 
     <!-- ======= Agents Section ======= -->
     <section class="section-agents section-t8">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
@@ -330,7 +330,7 @@
                             <h2 class="title-a">Best Agents</h2>
                         </div>
                         <div class="title-link">
-                            <a href="agents-grid.html">All Agents
+                            <a href="#">All Agents
                                 <span class="bi bi-chevron-right"></span>
                             </a>
                         </div>
@@ -338,30 +338,30 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($agents as $agnt)
                 <div class="col-md-4">
                     <div class="card-box-d">
-                        <div class="card-img-d">
-                            <img src="{{asset('frontend/assets/img/agent-4.jpg')}}" alt="" class="img-d img-fluid">
+                        <div class="card-img-d p-5">
+                            <img src="{{asset($agnt->file)}}" alt="img" class="img-d img-fluid " style="height: 450px">
                         </div>
                         <div class="card-overlay card-overlay-hover">
                             <div class="card-header-d">
                                 <div class="card-title-d align-self-center">
                                     <h3 class="title-d">
-                                        <a href="agent-single.html" class="link-two">Margaret Sotillo
-                                            <br> Escala</a>
+                                        <a href="#" class="link-two">{{$agnt->name}}
+                                           </a>
                                     </h3>
                                 </div>
                             </div>
                             <div class="card-body-d">
                                 <p class="content-d color-text-a">
-                                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                                </p>
+                                    {{$agnt->description}}</p>
                                 <div class="info-agents color-a">
                                     <p>
-                                        <strong>Phone: </strong> +54 356 945234
+                                        <strong>Phone: </strong> {{$agnt->mobile}}
                                     </p>
                                     <p>
-                                        <strong>Email: </strong> agents@example.com
+                                        <strong>Email: </strong>{{$agnt->email}}
                                     </p>
                                 </div>
                             </div>
@@ -394,7 +394,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                @endforeach
+                {{-- <div class="col-md-4">
                     <div class="card-box-d">
                         <div class="card-img-d">
                             <img src="{{asset('frontend/assets/img/agent-1.jpg')}}" alt="" class="img-d img-fluid">
@@ -505,14 +506,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section><!-- End Agents Section -->
 
     <!-- ======= Latest News Section ======= -->
     <section class="section-news section-t8">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
@@ -520,7 +521,7 @@
                             <h2 class="title-a">Upcoming Properties</h2>
                         </div>
                         <div class="title-link">
-                            <a href="blog-grid.html">All Properties
+                            <a href="#">All Properties
                                 <span class="bi bi-chevron-right"></span>
                             </a>
                         </div>
@@ -545,7 +546,7 @@
                                     </div>
                                     <div class="card-title-b">
                                         <h2 class="title-2">
-                                            <a href="blog-single.html">{{$datalist->price??''}}<br/>{{$datalist->area?$datalist->area:''}} m<sup>2</sup>
+                                            <a href="#">{{$datalist->price??''}}<br/>{{$datalist->area?$datalist->area:''}} m<sup>2</sup>
                                                 <br> new</a>
                                         </h2>
                                     </div>
@@ -644,7 +645,7 @@
 
     <!-- ======= Testimonials Section ======= -->
     <section class="section-testimonials section-t8 nav-arrow-a">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">

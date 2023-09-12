@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('locality');
+            $table->string('state');
             $table->string('price');
             $table->string('area');
             $table->string('description');

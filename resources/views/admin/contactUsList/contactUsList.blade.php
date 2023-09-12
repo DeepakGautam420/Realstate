@@ -2,16 +2,17 @@
 @section('style-area')
 @endsection
 @section('content-area')
-    <!-- user tables -->
+    <!-- Sale Property tables -->
     <div class="col-lg-12 col-md-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Users Property Tables</h4>
+                        <h4>Payment Tables</h4>
                     </div>
                 </div>
             </div>
+            {{-- {{$payment}} --}}
             <div class="widget-content widget-content-area">
                 <div class="table-responsive">
                     <table class="table table-bordered mb-4">
@@ -20,39 +21,19 @@
                                 <th>Sr.</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>Locality</th>
-                                <th>Price</th>
-                                <th>Area</th>
-                                <th>State</th>
-                                <th>Description</th>
+                                <th>Subject</th>
+                                <th>Message</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($property as $prpty)
+                            @foreach ($contactList as $pmnt)
                             <tr>
                                 <th>{{$loop-> index+1}}</th>
-                                <td>{{$prpty->name ?? ''}}</td>
-                                <td>{{$prpty->email ?? ''}}</td>
-                                <td> {{$prpty->mobile ?? ''}}</td>
-                                <td> {{$prpty->address ?? ''}}</td>
-                                <td> {{$prpty->city ?? ''}}</td>
-                                <td> {{$prpty->locality ?? ''}}</td>
-                                <td> {{$prpty->price ?? ''}}</td>
-                                <td> {{$prpty->area ?? ''}}</td>
-                                <td> {{$prpty->state ?? ''}}</td>
-                                <td> {{$prpty->description ?? ''}}</td>
-                                {{-- <td> 
-                                    @if(isset($prpty->picture))
-                                    @php
-                                        $imgs = json_decode($prpty->picture);
-                                    @endphp
-                                    @endif
-                                        <a href='{{route("admin.proertyimg",$prpty->picture)}}'><img src="{{asset('upload/property/'.$imgs[0]??'')}}" height='50x' width='50x'> </a>;
-                                </td> --}}
+                                <td>{{$pmnt->name ?? ''}}</td>
+                                <td>{{$pmnt->email ?? ''}}</td>
+                                <td> {{$pmnt->subject ?? ''}}</td>
+                                <td> {{$pmnt->message ?? ''}}</td>
                                 <td class="text-center">
                                     <div class="dropdown custom-dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
@@ -67,11 +48,11 @@
                                             </svg>
                                         </a>
                                         @php
-                                        $bid=Crypt::encrypt($prpty->id);
+                                        $bid=Crypt::encrypt($pmnt->id);
                                         @endphp
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                            <a class="dropdown-item" href="{{route('admin.editUserSellProperty',$bid)}}">Edit</a>
-                                            <a class="dropdown-item" href="{{route('admin.deleteSaleProperty',$bid)}}">Delete</a>
+                                            <a class="dropdown-item" href="{{route('admin.deleteContactUsList',$bid)}}">Delete</a>
+                                           
                                         </div>
                                     </div>
                                 </td>
@@ -82,7 +63,7 @@
                     {{-- {!! $properties->links() !!} --}}
                    
                 </div><br>
-                {{-- {!! $properties->links('pagination::bootstrap-5') !!} --}}
+                {{-- {!! $sale->links('pagination::bootstrap-5') !!} --}}
             </div>
         </div>
     </div>

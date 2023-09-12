@@ -57,7 +57,7 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me)){
             $role=Auth::user()->roles[0]->name;
-            return redirect()->route('admin.dashboard')->with('success', 'Welcome ' . $role . ' !');
+            return redirect()->route('admin.dashboard')->with('success', 'Welcome !');
         }else{
             return redirect()->back()->with('error', 'Invalid Username or Password !');
         }

@@ -25,11 +25,11 @@
             </div>
             @endif
             <form action="{{isset($editUser)?route('admin.userUpdate',$editUser->id):route('admin.userCreate')}}"
-                method="post" enctype="multipart/form-data">
+                method="post" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <div class="row mb-4">
                     <div class="col-6">
-                        <input type="text" class="form-control" name="name" placeholder="First name"
+                        <input type="text" class="form-control" name="name"  placeholder="First name"
                             value="{{$editUser->name ?? ''}}">
                     </div>
                     <div class="col-6">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="row mb-4">
                     <div class="col-6 {{isset($editUser)? 'd-none':''}}">
-                        <input type="password" class="form-control" name="password" placeholder="Password" value="">
+                        <input type="password" class="form-control" name="password"  placeholder="Password" value="">
                     </div>
                     <div class="col-6">
                         <select class="form-control form-small" name="roles[]">
@@ -52,6 +52,14 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <input type="number" class="form-control" name="mobile" placeholder="Mobile"
+                            value="{{$editUser->mobile ?? ''}}">
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">{{isset($editUser)? 'update':'submit'}}</button>
             </form>
         </div>

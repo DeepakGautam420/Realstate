@@ -32,7 +32,7 @@ a {
 a:hover {
   color: #2eca6a;
   text-decoration: none;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 10px;
   padding: 8px;
   
@@ -285,12 +285,12 @@ a:hover {
 
 /*------/ Space Padding /------*/
 .section-t8 {
-  padding-top: 8rem;
+  padding-top: 2rem;
 }
 
 @media (max-width: 767px) {
   .section-t8 {
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
 }
 
@@ -330,7 +330,7 @@ a:hover {
 
 /*------/ Title /------*/
 .title-wrap {
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .title-a {
@@ -1010,7 +1010,7 @@ a:hover {
 }
 
 .intro .intro-item {
-  padding-top: 2rem;
+  padding-top: 0rem;
 }
 
 .intro .carousel-item-a {

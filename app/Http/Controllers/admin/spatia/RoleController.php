@@ -21,7 +21,7 @@ class RoleController extends Controller
             'name' => 'required',
         ]);
         $roles = Role::create([
-            'name' => $request->name,
+            'name' => strtolower($request->name),
         ]);
         if ($roles) {
             return redirect()->back()->with('success', 'Roles Created Successfully !');
@@ -44,7 +44,7 @@ class RoleController extends Controller
             'name' => 'required',
         ]);
         $roles = Role::find($id)->update([
-            'name' => $request->name,
+            'name' =>strtolower( $request->name),
         ]);
         if ($roles) {
             return redirect()->back()->with('success', 'Roles Updated Successfully !');

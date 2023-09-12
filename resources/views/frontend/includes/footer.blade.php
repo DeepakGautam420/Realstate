@@ -1,6 +1,6 @@
  <!-- ======= Footer ======= -->
  <section class="section-footer">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-4">
                 <div class="widget-a">
@@ -139,7 +139,7 @@
                 <div class="copyright-footer">
                     <p class="copyright color-text-a">
                         &copy; Copyright
-                        <span class="color-a">Magicbricks</span> All Rights Reserved.
+                        <span class="color-a">ManakAnalitics</span> All Rights Reserved.
                     </p>
                 </div>
                 <div class="credits">
