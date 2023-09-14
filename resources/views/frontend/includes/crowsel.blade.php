@@ -1,4 +1,4 @@
-<div class="intro intro-carousel container swiper position-relative">
+<div class="intro intro-carousel  swiper position-relative">
     <div class="swiper-wrapper">
         <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image:url({{asset('frontend/assets/img/slide-1.jpg')}}); ">
             <div class="overlay overlay-a"></div>

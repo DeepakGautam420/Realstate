@@ -10,7 +10,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-    font-family: "Poppins", sans-serif;
+    font-family:  "Didot","serif";
     color: #555555;
 }
 
@@ -2351,4 +2351,8 @@ ul {
     font-size: 2rem;
 }
 
+.p3 {
+  font-family: "Audiowide", sans-serif;
+ 
+}
 /* End Single Product*/

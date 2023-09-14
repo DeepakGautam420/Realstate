@@ -4,7 +4,7 @@
  style="background: linear-gradient(to bottom, rgb(165, 110, 6), rgb(217, 196, 158), #0f9b13);
 ">
  <div class="p-2 col-sm-6">
-     <h2 class="text-white"><a href="{{url('/')}}">MagicBricks</a></h2>
+     <h2 class="text-white p3"><a href="{{url('/')}}" >MagicBricks</a></h2>
  </div>
  <!-- <div class="justify-content-center" id="navbarDefault">
  <ul class="navbar-nav">
