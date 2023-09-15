@@ -3,6 +3,7 @@
  <!--Carousel-->
 
  @include('frontend.includes.crowsel')
+ @include('frontend.includes.search')
 <main id="main">
 
     <!-- ======= Services Section ======= -->
@@ -123,7 +124,7 @@
                             <div class="img-box-a">
                                 @php
                                 $pctr=json_decode($ltst->picture);
-                                
+
                                 @endphp
                                 <img src="{{asset('upload/product/'.$pctr[0]??'')}}" alt="" class="img-a img-fluid">
                             </div>
@@ -640,7 +641,7 @@
             <div class="news-carousel-pagination carousel-pagination"></div>
         </div>
     </section>
-    
+
     <!-- End Latest News Section -->
 
     <!-- ======= Testimonials Section ======= -->

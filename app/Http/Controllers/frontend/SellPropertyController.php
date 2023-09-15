@@ -11,6 +11,7 @@ use App\Models\UpcomingSale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class SellPropertyController extends Controller
 {
@@ -227,6 +228,54 @@ class SellPropertyController extends Controller
         }
     }
 
-    
+    public function searchProduct(Request $request)
+    {
+        // dd($request);
+
+        if($request->property=='for_sale'){
+        //    $search_field= ['name','address','price'];
+           $query = DB::table('sell_properties');
+           if($request->name){
+               $name = $request->name;
+               $query->where('name','like','%'.$name.'%');
+           }
+           if($request->address){
+                $address = $request->address;
+                $query->where('address','like','%'.$address.'%');
+            }
+            if($request->price){
+                $price = $request->price;
+                $query->where('price','like','%'.$price.'%');
+            }
+            $selldata = $query->get();
+            return view('frontend.searchResult',compact('selldata'));
+
+        }elseif($request->property=='for_rent'){
+            $query = DB::table('agents');
+           if($request->name){
+               $name = $request->name;
+               $query->where('name','like','%'.$name.'%');
+           }
+           if($request->address){
+                $address = $request->address;
+                $query->where('property_address','like','%'.$address.'%');
+            }
+            if($request->price){
+                $price = $request->price;
+                $query->where('full_rent','like','%'.$price.'%');
+            }
+            $rentdata = $query->get();
+            return view('frontend.searchResult',compact('rentdata'));
+        }
+
+        // $product=Agent::Where('property_location',$request->search_product)->get();
+        // dd($product);
+        // $propertyes=Agent::where('for_sale',$request->for_sale)->get();
+        // dd($propertyes);
+        // $price=Agent::where('full_rent',$request->price)->get();
+        // dd($price);
+    }
+
+
 
 }

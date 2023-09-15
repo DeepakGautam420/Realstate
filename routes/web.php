@@ -119,3 +119,4 @@ Route::get('show-rent-lease-property/{id}',[SellPropertyController::class,'rentL
 Route::get('show-sale-property/{id}',[SellPropertyController::class,'saleOverView'])->name('saleOverView');
 Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
 Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');
+Route::post('search-item',[SellPropertyController::class,'searchProduct'])->name('searchProduct');

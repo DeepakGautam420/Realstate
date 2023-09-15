@@ -114,19 +114,20 @@
               </li>
              <li class="nav-item dropdown">
                  <a class="nav-link " href="{{route('sellProperty')}}" >Sell</a>
-                 
+
              </li>
 
              <li class="nav-item dropdown">
                  <a class="nav-link " href="{{route('aboutUs')}}" >About US</a>
-                 
+
              </li>
              <li class="nav-item dropdown">
                  <a class="nav-link " href="{{route('contactUs')}}" >Contact US</a>
-                 
+
              </li>
          </ul>
      </div>
 
  </div>
 </nav><!-- End Header/Navbar -->
+
