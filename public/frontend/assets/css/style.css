@@ -1680,7 +1680,13 @@ a:hover {
 ======================================*/
 .card-box-c {
     position: relative;
+    transition: transform 0.4s ease;
+    
 }
+.card-box-c:hover {
+    transform: scale(1.1);
+    /* background-color: #77ea90; */
+  }
 
 @media (max-width: 767px) {
     .card-box-c {

@@ -1,7 +1,6 @@
  <!-- ======= Intro Section ======= -->
 
- <div class="p-5"
- style="background: linear-gradient(to bottom, rgb(165, 110, 6), rgb(217, 196, 158), #0f9b13);">
+ <div class="p-5">
  <div class="d-flex justify-content-center align-items-center">
      <h3 class="p-5">Welcome Back Let's Continue your search</h3>
  </div>
@@ -56,6 +55,12 @@
                  </select>
              </div>
          </div>
+         <div class="col-sm d-flex pe-0" >
+             <div class="vr me-3 mt-2" style="height:40px;"></div>
+             <button type="button" class="btn btn-danger w-100" style="border-radius:35px;">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+
+         </div>
+
      </div>
  </div>
 </div>
