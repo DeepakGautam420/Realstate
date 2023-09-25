@@ -120,3 +120,4 @@ Route::get('show-sale-property/{id}',[SellPropertyController::class,'saleOverVie
 Route::post('store-sell-property',[SellPropertyController::class,'storeSellProperty'])->name('storeSellProperty');
 Route::get('sell-property',[SellPropertyController::class,'sellProperty'])->name('sellProperty');
 Route::post('search-item',[SellPropertyController::class,'searchProduct'])->name('searchProduct');
+Route::get('search-item-one-by-one/{id}',[SellPropertyController::class,'searchProductOne'])->name('searchProductOne');

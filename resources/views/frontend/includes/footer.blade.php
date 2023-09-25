@@ -1,6 +1,13 @@
  <!-- ======= Footer ======= -->
+
  <section class="section-footer">
     <div class="container-fluid">
+        <div class="whatsapp_float">
+                <a href="https://wa.me/919935422558" target="_blank"><img src="http://www.animationmedia.org/img/whatsapp.png" width="80px" class="whatsapp_float_btn"/></a>
+            	</div>
+                <div>``
+                    <p onclick="window.location.href='tel:5555555555'"><img src="path/to/phone/icon.jpg" alt="Call 555-555-5555" /></p>
+                </div>
         <div class="row">
             <div class="col-sm-12 col-md-4">
                 <div class="widget-a">

@@ -12,7 +12,7 @@
      <div class="container  rounded-5 bg-body-tertiary border border-secondary mt-2">
         <div class="text-center">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-               <input type="radio" class="btn-check" name="property" value='for_rent' id="btnradio1" >
+               <input type="radio" class="btn-check" name="property" value='for_rent' id="btnradio1" checked>
                <label class="btn btn-outline-primary"  for="btnradio1">Rent/Lease</label>
 
                <input type="radio" class="btn-check" name="property"  value="for_sale" id="btnradio2">

@@ -268,14 +268,14 @@ class SellPropertyController extends Controller
             return view('frontend.searchResult',compact('rentdata'));
         }
 
-        // $product=Agent::Where('property_location',$request->search_product)->get();
-        // dd($product);
-        // $propertyes=Agent::where('for_sale',$request->for_sale)->get();
-        // dd($propertyes);
-        // $price=Agent::where('full_rent',$request->price)->get();
-        // dd($price);
+
     }
 
+    public function searchProductOne($id)
+    {
+        $product=Agent::find($id);
+        return view('frontend.searchProductOneByOne',compact('product'));
+    }
 
 
 }

@@ -61,8 +61,8 @@
             $pctr=json_decode($data->picture);
 
             @endphp
-            <img src="{{asset('upload/product/'.$pctr[0]??'')}}" alt="" class="img-a img-fluid">
-
+         <a href="{{route('searchProductOne',$data->id)}}"><img src="{{asset('upload/product/'.$pctr[0]??'')}}" alt="" class="img-a img-fluid">
+         </a>
             {{--  <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/arch" style="width: 200px; height: 250px;">  --}}
          </div>
         </div>
