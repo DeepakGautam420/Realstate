@@ -1,9 +1,25 @@
  <!-- ======= Intro Section ======= -->
 
+<<<<<<< HEAD
  <div class="p-5" style="background: linear-gradient(to bottom,rgb(251, 251, 249));">
      <div class="d-flex justify-content-center align-items-center">
          <h3 class="p-5">Search Here</h3>
      </div>
+=======
+ <div class="p-5">
+ <div class="d-flex justify-content-center align-items-center">
+     <h3 class="p-5">Welcome Back Let's Continue your search</h3>
+ </div>
+ <div class="d-flex justify-content-center">
+     <ul class="d-flex list-unstyled gap-3 ">
+         <li class="list-group-item"><a href="">Buy</a></li>
+         <li class="list-group-item"><a href="">Rent</a></li>
+         <li class="list-group-item"><a href="">PG</a></li>
+         <li class="list-group-item"><a href="">Plot</a></li>
+         <li class="list-group-item"><a href="">Commercial</a></li>
+     </ul>
+ </div>
+>>>>>>> 19189f53af1f07c0fa254d1a8c75d761447c2e6d
 
      <form action="{{route('searchProduct')}}" method="post">
         @csrf
@@ -55,6 +71,12 @@
                 {{--  </div>  --}}
             </div>
          </div>
+         <div class="col-sm d-flex pe-0" >
+             <div class="vr me-3 mt-2" style="height:40px;"></div>
+             <button type="button" class="btn btn-danger w-100" style="border-radius:35px;">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+
+         </div>
+
      </div>
     </form>
  </div>

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
+                        <div class="card-header-c  d-flex">
                             <div class="card-box-ico">
                                 <span class="bi bi-cart"></span>
                             </div>
